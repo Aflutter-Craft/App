@@ -31,7 +31,6 @@ class DesktopHome extends HookWidget {
                     children: [
                       ImageContainer(
                         image: content,
-                        isResult: false,
                       ),
                       SizedBox(height: 15),
                       StyledButton(
@@ -58,7 +57,6 @@ class DesktopHome extends HookWidget {
                     children: [
                       ImageContainer(
                         image: style,
-                        isResult: false,
                       ),
                       SizedBox(height: 15),
                       StyledButton(
@@ -85,7 +83,6 @@ class DesktopHome extends HookWidget {
                     children: [
                       ImageContainer(
                         image: result,
-                        isResult: true,
                       ),
                       SizedBox(height: 15),
                       Row(
