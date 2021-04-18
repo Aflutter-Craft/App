@@ -2,21 +2,14 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-class ImageContainer extends StatefulWidget {
+class ImageContainer extends StatelessWidget {
   final image;
-  final bool isResult;
 
   const ImageContainer({
     Key? key,
     this.image,
-    this.isResult = false,
   }) : super(key: key);
 
-  @override
-  _ImageContainerState createState() => _ImageContainerState();
-}
-
-class _ImageContainerState extends State<ImageContainer> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -36,7 +29,7 @@ class _ImageContainerState extends State<ImageContainer> {
           )
         ],
         image: DecorationImage(
-          image: widget.image,
+          image: image,
           fit: BoxFit.fill,
         ),
       ),
