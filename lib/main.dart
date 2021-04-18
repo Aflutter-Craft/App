@@ -14,7 +14,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // check if we are on mobile
-    bool isMobile = Platform.isAndroid || Platform.isIOS;
+    bool isMobile;
+    try {
+      isMobile = Platform.isAndroid || Platform.isIOS;
+    } catch (e) {
+      isMobile = false;
+    }
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Aflutter Craft',
