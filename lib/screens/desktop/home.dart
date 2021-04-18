@@ -14,7 +14,7 @@ class DesktopHome extends HookWidget {
     var style = useProvider(styleProvider);
     var result = useProvider(resultProvider);
     return Scaffold(
-      appBar: desktopAppBar(),
+      appBar: desktopAppBar(context: context),
       body: Container(
         color: AppColors.backgroundCol,
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
