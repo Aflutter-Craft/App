@@ -2,19 +2,13 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-import 'package:aflutter_craft/utils/theme.dart';
-
 class ImageContainer extends StatefulWidget {
-  final String? imgPath;
-  final String buttonText;
-  final buttonFunc;
+  final image;
   final bool isResult;
 
   const ImageContainer({
     Key? key,
-    @required this.imgPath,
-    this.buttonText = "",
-    this.buttonFunc,
+    this.image,
     this.isResult = false,
   }) : super(key: key);
 
@@ -42,37 +36,9 @@ class _ImageContainerState extends State<ImageContainer> {
           )
         ],
         image: DecorationImage(
-          image: AssetImage(widget.imgPath ?? ""),
-          fit: BoxFit.cover,
+          image: widget.image,
+          fit: BoxFit.fill,
         ),
-      ),
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            child: !widget.isResult
-                ? BackdropFilter(
-                    filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
-                    child: Container(
-                      color: Colors.black.withOpacity(0.3),
-                    ),
-                  )
-                : SizedBox.shrink(),
-          ),
-          if (!widget.isResult)
-            MaterialButton(
-              onPressed: widget.buttonFunc,
-              child: Text(widget.buttonText),
-              textColor: Colors.white,
-              color: AppColors.accentColor,
-              elevation: 0,
-              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15.0),
-              ),
-            )
-        ],
       ),
     );
   }
