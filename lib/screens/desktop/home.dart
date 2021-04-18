@@ -10,9 +10,9 @@ class DesktopHome extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    var content = useProvider(contentProvider).state;
-    var style = useProvider(styleProvider).state;
-    var result = useProvider(resultProvider.notifier).state;
+    var content = useProvider(contentProvider);
+    var style = useProvider(styleProvider);
+    var result = useProvider(resultProvider);
     return Scaffold(
       appBar: desktopAppBar(),
       body: Container(
@@ -30,7 +30,7 @@ class DesktopHome extends HookWidget {
                   Column(
                     children: [
                       ImageContainer(
-                        image: content.state,
+                        image: content,
                         isResult: false,
                       ),
                       SizedBox(height: 15),
@@ -45,7 +45,10 @@ class DesktopHome extends HookWidget {
                           final file = await openFile(
                             acceptedTypeGroups: [typeGroup],
                           );
-                          content.setImage(AssetImage(file!.path));
+                          // update the content image provider(will update the ui image)
+                          context
+                              .read(contentProvider.notifier)
+                              .setImage(AssetImage(file!.path));
                         },
                       )
                     ],
@@ -54,7 +57,7 @@ class DesktopHome extends HookWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       ImageContainer(
-                        image: style.state,
+                        image: style,
                         isResult: false,
                       ),
                       SizedBox(height: 15),
@@ -69,7 +72,10 @@ class DesktopHome extends HookWidget {
                           final file = await openFile(
                             acceptedTypeGroups: [typeGroup],
                           );
-                          style.setImage(AssetImage(file!.path));
+                          // update the style image provider(will update the ui image)
+                          context
+                              .read(styleProvider.notifier)
+                              .setImage(AssetImage(file!.path));
                         },
                       )
                     ],
@@ -78,7 +84,7 @@ class DesktopHome extends HookWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       ImageContainer(
-                        image: result.state,
+                        image: result,
                         isResult: true,
                       ),
                       SizedBox(height: 15),
