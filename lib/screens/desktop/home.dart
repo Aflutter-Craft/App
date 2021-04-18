@@ -1,10 +1,11 @@
 import 'package:aflutter_craft/utils/theme.dart';
 
 import 'package:aflutter_craft/widgets/widgets.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
 class DesktopHome extends StatefulWidget {
-  DesktopHome({Key key}) : super(key: key);
+  DesktopHome({Key? key}) : super(key: key);
 
   @override
   _DesktopHomeState createState() => _DesktopHomeState();
@@ -31,7 +32,16 @@ class _DesktopHomeState extends State<DesktopHome> {
                     imgPath: "assets/images/default_content.jpg",
                     isResult: false,
                     buttonText: "Select Content",
-                    buttonFunc: () => {},
+                    buttonFunc: () async {
+                      FilePickerResult? result =
+                          await FilePicker.platform.pickFiles();
+                      if (result != null) {
+                        PlatformFile file = result.files.single;
+                        print(file.name);
+                      } else {
+                        // User canceled the picker
+                      }
+                    },
                   ),
                   ImageContainer(
                     imgPath: "assets/images/default_style.jpg",
@@ -43,7 +53,7 @@ class _DesktopHomeState extends State<DesktopHome> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       ImageContainer(
-                        imgPath: "./assets/images/default_result.jpg",
+                        imgPath: "assets/images/default_result.jpg",
                         isResult: true,
                       ),
                       SizedBox(height: 15),
