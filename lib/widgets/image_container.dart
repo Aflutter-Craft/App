@@ -5,17 +5,17 @@ import 'package:flutter/material.dart';
 import 'package:aflutter_craft/utils/theme.dart';
 
 class ImageContainer extends StatefulWidget {
-  final String imgPath;
+  final String? imgPath;
   final String buttonText;
-  final Function buttonFunc;
+  final buttonFunc;
   final bool isResult;
 
   const ImageContainer({
-    Key key,
-    this.imgPath,
-    this.buttonText,
+    Key? key,
+    @required this.imgPath,
+    this.buttonText = "",
     this.buttonFunc,
-    this.isResult,
+    this.isResult = false,
   }) : super(key: key);
 
   @override
@@ -42,7 +42,7 @@ class _ImageContainerState extends State<ImageContainer> {
           )
         ],
         image: DecorationImage(
-          image: AssetImage(widget.imgPath),
+          image: AssetImage(widget.imgPath ?? ""),
           fit: BoxFit.cover,
         ),
       ),

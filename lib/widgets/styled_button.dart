@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 
 class StyledButton extends StatelessWidget {
   final String btnLabel;
-  final Function onPressed;
-  final IconData icon;
+  final onPressed;
+  final IconData? icon;
 
-  const StyledButton({Key key, this.btnLabel, this.onPressed, this.icon})
+  const StyledButton({Key? key, this.btnLabel = "", this.onPressed, this.icon})
       : super(key: key);
   @override
   Widget build(BuildContext context) {

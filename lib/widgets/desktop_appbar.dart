@@ -1,7 +1,7 @@
 import 'package:aflutter_craft/utils/utils.dart';
 import 'package:flutter/material.dart';
 
-Widget desktopAppBar() {
+PreferredSizeWidget? desktopAppBar() {
   return AppBar(
     actions: [
       Padding(
