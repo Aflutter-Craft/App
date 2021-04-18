@@ -1,7 +1,9 @@
+import 'package:aflutter_craft/screens/screens.dart';
 import 'package:aflutter_craft/utils/utils.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-PreferredSizeWidget? desktopAppBar() {
+PreferredSizeWidget? desktopAppBar({context}) {
   return AppBar(
     actions: [
       Padding(
@@ -13,9 +15,25 @@ PreferredSizeWidget? desktopAppBar() {
           children: [
             buildLink(label: "Community", link: () => {}),
             SizedBox(width: 20),
-            buildLink(label: "Style Store", link: () => {}),
+            buildLink(
+              label: "Style Store",
+              link: () => Navigator.push(
+                context,
+                CupertinoPageRoute(
+                  builder: (context) => StyleStore(),
+                ),
+              ),
+            ),
             SizedBox(width: 20),
-            buildLink(label: "About", link: () => {}),
+            buildLink(
+              label: "About",
+              link: () => Navigator.push(
+                context,
+                CupertinoPageRoute(
+                  builder: (context) => About(),
+                ),
+              ),
+            ),
           ],
         ),
       )
@@ -35,6 +53,7 @@ PreferredSizeWidget? desktopAppBar() {
 Widget buildLink({label, link}) {
   return InkWell(
     onTap: link,
+    enableFeedback: false,
     child: Text(
       label,
       style: TextStyle(color: Colors.white),
