@@ -1,32 +1,20 @@
 import 'package:aflutter_craft/utils/theme.dart';
+
 import 'package:aflutter_craft/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
-class Home extends StatefulWidget {
-  Home({Key key}) : super(key: key);
+class DesktopHome extends StatefulWidget {
+  DesktopHome({Key key}) : super(key: key);
 
   @override
-  _HomeState createState() => _HomeState();
+  _DesktopHomeState createState() => _DesktopHomeState();
 }
 
-class _HomeState extends State<Home> {
+class _DesktopHomeState extends State<DesktopHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(
-          "Aflutter Craft",
-          style: TextStyle(
-            fontWeight: FontWeight.w400,
-            color: Colors.white,
-          ),
-        ),
-        elevation: 0,
-        centerTitle: true,
-        backgroundColor: AppColors.accentColor,
-      ),
+      appBar: desktopAppBar(),
       body: Container(
         color: AppColors.backgroundCol,
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:aflutter_craft/screens/screens.dart';
 import 'package:aflutter_craft/utils/theme.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +13,8 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // check if we are on mobile
+    bool isMobile = Platform.isAndroid || Platform.isIOS;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Aflutter Craft',
@@ -20,7 +24,7 @@ class MyApp extends StatelessWidget {
           Theme.of(context).textTheme,
         ),
       ),
-      home: Home(),
+      home: isMobile ? MobileHome() : DesktopHome(),
     );
   }
 }
