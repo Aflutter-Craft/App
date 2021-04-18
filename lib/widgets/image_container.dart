@@ -8,14 +8,14 @@ class ImageContainer extends StatefulWidget {
   final String imgPath;
   final String buttonText;
   final Function buttonFunc;
-  final bool showBtn;
+  final bool isResult;
 
   const ImageContainer({
     Key key,
     this.imgPath,
     this.buttonText,
     this.buttonFunc,
-    this.showBtn,
+    this.isResult,
   }) : super(key: key);
 
   @override
@@ -27,6 +27,8 @@ class _ImageContainerState extends State<ImageContainer> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Container(
+      width: size.height * 0.55,
+      height: size.height * 0.55,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
@@ -39,23 +41,26 @@ class _ImageContainerState extends State<ImageContainer> {
             offset: Offset(0, 6.0),
           )
         ],
+        image: DecorationImage(
+          image: AssetImage(widget.imgPath),
+          fit: BoxFit.cover,
+        ),
       ),
       child: Stack(
         alignment: Alignment.center,
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(20),
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 1, sigmaY: 1),
-              child: Image(
-                image: AssetImage(widget.imgPath),
-                fit: BoxFit.fill,
-                height: size.height * 0.55,
-                width: size.height * 0.55,
-              ),
-            ),
+            child: !widget.isResult
+                ? BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
+                    child: Container(
+                      color: Colors.black.withOpacity(0.3),
+                    ),
+                  )
+                : SizedBox.shrink(),
           ),
-          if (widget.showBtn)
+          if (!widget.isResult)
             MaterialButton(
               onPressed: widget.buttonFunc,
               child: Text(widget.buttonText),
