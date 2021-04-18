@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'Aflutter Craft',
       theme: ThemeData(
         primaryColor: AppColors.backgroundCol,
-        textTheme: GoogleFonts.robotoTextTheme(
+        textTheme: GoogleFonts.interTextTheme(
           Theme.of(context).textTheme,
         ),
       ),

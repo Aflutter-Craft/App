@@ -29,13 +29,15 @@ class _HomeState extends State<Home> {
       ),
       body: Container(
         color: AppColors.backgroundCol,
-        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 50),
-              child: Row(
+        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+        child: Padding(
+          padding: const EdgeInsets.only(top: 50),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ImageContainer(
                     imgPath: "assets/images/default_content.jpg",
@@ -49,14 +51,42 @@ class _HomeState extends State<Home> {
                     buttonText: "Select Style",
                     buttonFunc: () => {},
                   ),
-                  ImageContainer(
-                    imgPath: "./assets/images/default_result.jpg",
-                    showBtn: false,
-                  )
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ImageContainer(
+                        imgPath: "./assets/images/default_result.jpg",
+                        showBtn: false,
+                      ),
+                      SizedBox(height: 15),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          StyledButton(
+                            btnLabel: "Save",
+                            icon: Icons.download_outlined,
+                            onPressed: () => {},
+                          ),
+                          SizedBox(width: 70),
+                          StyledButton(
+                            btnLabel: "Share",
+                            icon: Icons.share_rounded,
+                            onPressed: () => {},
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
                 ],
               ),
-            ),
-          ],
+              SizedBox(height: 80),
+              StyledButton(
+                btnLabel: "Apply Style",
+                icon: Icons.check_circle,
+                onPressed: () => {},
+              )
+            ],
+          ),
         ),
       ),
     );
