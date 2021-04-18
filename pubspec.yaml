@@ -27,16 +27,21 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  riverpod:
-  flutter_riverpod:
-  dio:
-  google_fonts:
-  file_picker:
+  riverpod: any
+  flutter_riverpod: any
+  flutter_hooks: any
+  hooks_riverpod: any
+  dio: any
+  google_fonts: any
+  file_selector: any
+  file_selector_linux: any
+  file_selector_windows: any
+  file_selector_macos: any
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_native_splash:
+  flutter_native_splash: any
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

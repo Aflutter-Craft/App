@@ -1,19 +1,18 @@
-import 'package:aflutter_craft/utils/theme.dart';
-
+import 'package:aflutter_craft/utils/utils.dart';
 import 'package:aflutter_craft/widgets/widgets.dart';
-import 'package:file_picker/file_picker.dart';
+import 'package:file_selector/file_selector.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class DesktopHome extends StatefulWidget {
+class DesktopHome extends HookWidget {
   DesktopHome({Key? key}) : super(key: key);
 
   @override
-  _DesktopHomeState createState() => _DesktopHomeState();
-}
-
-class _DesktopHomeState extends State<DesktopHome> {
-  @override
   Widget build(BuildContext context) {
+    var content = useProvider(contentProvider).state;
+    var style = useProvider(styleProvider).state;
+    var result = useProvider(resultProvider.notifier).state;
     return Scaffold(
       appBar: desktopAppBar(),
       body: Container(
@@ -28,32 +27,58 @@ class _DesktopHomeState extends State<DesktopHome> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ImageContainer(
-                    imgPath: "assets/images/default_content.jpg",
-                    isResult: false,
-                    buttonText: "Select Content",
-                    buttonFunc: () async {
-                      FilePickerResult? result =
-                          await FilePicker.platform.pickFiles();
-                      if (result != null) {
-                        PlatformFile file = result.files.single;
-                        print(file.name);
-                      } else {
-                        // User canceled the picker
-                      }
-                    },
-                  ),
-                  ImageContainer(
-                    imgPath: "assets/images/default_style.jpg",
-                    isResult: false,
-                    buttonText: "Select Style",
-                    buttonFunc: () => {},
+                  Column(
+                    children: [
+                      ImageContainer(
+                        image: content.state,
+                        isResult: false,
+                      ),
+                      SizedBox(height: 15),
+                      StyledButton(
+                        btnLabel: "Select Content",
+                        icon: Icons.photo_size_select_actual_outlined,
+                        onPressed: () async {
+                          final typeGroup = XTypeGroup(
+                            label: 'images',
+                            extensions: ['jpg', 'png'],
+                          );
+                          final file = await openFile(
+                            acceptedTypeGroups: [typeGroup],
+                          );
+                          content.setImage(AssetImage(file!.path));
+                        },
+                      )
+                    ],
                   ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       ImageContainer(
-                        imgPath: "assets/images/default_result.jpg",
+                        image: style.state,
+                        isResult: false,
+                      ),
+                      SizedBox(height: 15),
+                      StyledButton(
+                        btnLabel: "Select Style",
+                        icon: Icons.brush_outlined,
+                        onPressed: () async {
+                          final typeGroup = XTypeGroup(
+                            label: 'images',
+                            extensions: ['jpg', 'png'],
+                          );
+                          final file = await openFile(
+                            acceptedTypeGroups: [typeGroup],
+                          );
+                          style.setImage(AssetImage(file!.path));
+                        },
+                      )
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ImageContainer(
+                        image: result.state,
                         isResult: true,
                       ),
                       SizedBox(height: 15),
