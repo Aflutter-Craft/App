@@ -29,13 +29,13 @@ class _DesktopHomeState extends State<DesktopHome> {
                 children: [
                   ImageContainer(
                     imgPath: "assets/images/default_content.jpg",
-                    showBtn: true,
+                    isResult: false,
                     buttonText: "Select Content",
                     buttonFunc: () => {},
                   ),
                   ImageContainer(
                     imgPath: "assets/images/default_style.jpg",
-                    showBtn: true,
+                    isResult: false,
                     buttonText: "Select Style",
                     buttonFunc: () => {},
                   ),
@@ -44,7 +44,7 @@ class _DesktopHomeState extends State<DesktopHome> {
                     children: [
                       ImageContainer(
                         imgPath: "./assets/images/default_result.jpg",
-                        showBtn: false,
+                        isResult: true,
                       ),
                       SizedBox(height: 15),
                       Row(
