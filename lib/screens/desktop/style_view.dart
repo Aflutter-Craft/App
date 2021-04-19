@@ -5,9 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class StyleView extends ConsumerWidget {
-  StyleView({this.provider, Key? key}) : super(key: key);
+  StyleView({this.category, this.provider, Key? key}) : super(key: key);
 
   final provider;
+  final String? category;
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
@@ -15,7 +16,7 @@ class StyleView extends ConsumerWidget {
 
     print(styleImagesProviders.length);
     return Scaffold(
-      appBar: desktopAppBar(context: context, enableBack: true),
+      appBar: desktopAppBar(context: context, label: category),
       body: GridView.builder(
         padding: EdgeInsets.all(30),
         primary: true,

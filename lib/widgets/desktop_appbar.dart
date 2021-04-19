@@ -3,27 +3,41 @@ import 'package:aflutter_craft/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-PreferredSizeWidget? desktopAppBar({context, enableBack = false}) {
+PreferredSizeWidget? desktopAppBar({context, label = "Aflutter Craft"}) {
   return AppBar(
     actions: [
       Padding(
-        padding: const EdgeInsets.only(right: 56),
+        padding: const EdgeInsets.only(right: 30),
         child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            buildLink(label: "Community", route: DesktopHome()),
+            buildLink(
+                label: "Community",
+                routeFun: makeRoute(
+                  label: "Community",
+                  context: context,
+                  route: DesktopHome(),
+                )),
             SizedBox(width: 30),
             buildLink(
               label: "Style Store",
-              route: StyleStore(),
+              routeFun: makeRoute(
+                label: "Style Store",
+                context: context,
+                route: StyleStore(),
+              ),
               context: context,
             ),
             SizedBox(width: 30),
             buildLink(
               label: "About",
-              route: About(),
+              routeFun: makeRoute(
+                label: "About",
+                context: context,
+                route: About(),
+              ),
               context: context,
             ),
           ],
@@ -31,31 +45,42 @@ PreferredSizeWidget? desktopAppBar({context, enableBack = false}) {
       )
     ],
     title: buildLink(
-      label: "Aflutter Craft",
-      route: DesktopHome(),
+      label: label,
+      routeFun: label == "Aflutter Craft"
+          ? makeRoute(
+              label: label,
+              context: context,
+              route: DesktopHome(),
+            )
+          : () => {},
       context: context,
     ),
     elevation: 0,
     backgroundColor: AppColors.accentColor,
-    leading: enableBack ? null : Container(),
-    titleSpacing: 0,
+    automaticallyImplyLeading: true,
+    leadingWidth: 56,
     iconTheme: IconThemeData(
       color: Colors.white,
     ),
   );
 }
 
-Widget buildLink({label, route, context}) {
+makeRoute({context, route, label}) {
+  return () => Navigator.push(
+        context,
+        CupertinoPageRoute(
+          fullscreenDialog: true,
+          title: label,
+          builder: (context) => route,
+        ),
+      );
+}
+
+Widget buildLink({label, routeFun, context}) {
   return InkWell(
-    onTap: () => Navigator.pushReplacement(
-      context,
-      CupertinoPageRoute(
-        fullscreenDialog: true,
-        title: label,
-        builder: (context) => route,
-      ),
-    ),
+    onTap: routeFun,
     enableFeedback: false,
+    focusColor: Colors.transparent,
     hoverColor: Colors.transparent,
     child: Text(
       label,
