@@ -34,30 +34,6 @@ int randomNumber = random.nextInt(99) + 1; // from 10 upto 99 included
 
 const String BUCKET_PREFIX = "https://aflutter-craft.s3.amazonaws.com/styles/";
 
-enum Categories {
-  abstract,
-  animal_painting,
-  cityscape,
-  figurative,
-  flower_painting,
-  genre_painting,
-  landscape,
-  marina,
-  mythological_painting,
-  nude_painting_nu,
-  portrait,
-  religious_painting,
-  still_life,
-  symbolic_painting,
-}
-
-// an extention to format category enum to only name and replace accordignly
-extension ParseToString on Categories {
-  String toShortString() {
-    return this.toString().split(".")[1].replaceAll("_", "-");
-  }
-}
-
 // convert each word of text to capital
 String convertToTitleCase(String text) {
   if (text.length <= 1) {
