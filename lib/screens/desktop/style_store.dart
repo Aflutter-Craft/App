@@ -2,6 +2,7 @@ import 'package:aflutter_craft/models/models.dart';
 import 'package:aflutter_craft/screens/desktop/desktop.dart';
 import 'package:aflutter_craft/utils/utils.dart';
 import 'package:aflutter_craft/widgets/widgets.dart';
+import 'package:file_selector/file_selector.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -18,6 +19,28 @@ class StyleStore extends ConsumerWidget {
     print(styleImagesProviders.length);
     return Scaffold(
       appBar: desktopAppBar(context: context, label: "Style Store"),
+      floatingActionButton: StyledButton(
+        btnLabel: "Upload Style",
+        icon: Icons.add,
+        onPressed: () async {
+          final typeGroup = XTypeGroup(
+            label: 'images',
+            extensions: ['jpg', 'png'],
+          );
+          final file = await openFile(
+            acceptedTypeGroups: [typeGroup],
+          );
+          // update the style image provider(will update the ui image)
+          if (file != null) {
+            context
+                .read(styleProvider.notifier)
+                .setImage(AssetImage(file.path));
+
+            // go back to main screen
+            Navigator.pop(context);
+          }
+        },
+      ),
       body: GridView.builder(
         padding: EdgeInsets.all(30),
         primary: true,
