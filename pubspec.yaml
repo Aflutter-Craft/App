@@ -1,5 +1,5 @@
 name: aflutter_craft
-description: A new Flutter project.
+description: A platform for neural art style transfer.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -31,12 +31,14 @@ dependencies:
   flutter_riverpod: any
   flutter_hooks: any
   hooks_riverpod: any
-  dio: any
+  http: any
   google_fonts: any
   file_selector: any
   file_selector_linux: any
   file_selector_windows: any
   file_selector_macos: any
+  cached_network_image: any
+  shimmer: any
 
 dev_dependencies:
   flutter_test:
@@ -56,6 +58,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - assets/texts/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
