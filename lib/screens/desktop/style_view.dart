@@ -1,5 +1,6 @@
 import 'package:aflutter_craft/utils/utils.dart';
 import 'package:aflutter_craft/widgets/widgets.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -14,7 +15,6 @@ class StyleView extends ConsumerWidget {
   Widget build(BuildContext context, ScopedReader watch) {
     var prov = watch(provider);
 
-    print(styleImagesProviders.length);
     return Scaffold(
       appBar: desktopAppBar(context: context, label: category),
       body: GridView.builder(
@@ -32,8 +32,23 @@ class StyleView extends ConsumerWidget {
         itemBuilder: (context, index) => prov.when(
           data: (data) => Column(
             children: [
-              NetworkImageContainer(
-                imgName: data[index],
+              InkWell(
+                onTap: () async {
+                  // update the content image provider(will update the ui image)
+                  context.read(styleProvider.notifier).setImage(
+                        CachedNetworkImageProvider(
+                          BUCKET_PREFIX + data[index],
+                        ),
+                      );
+
+                  // pop navigator twice to return to main page
+                  final nav = Navigator.of(context);
+                  nav.pop();
+                  nav.pop();
+                },
+                child: NetworkImageContainer(
+                  imgName: data[index],
+                ),
               ),
             ],
           ),

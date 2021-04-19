@@ -16,7 +16,6 @@ class StyleStore extends ConsumerWidget {
     var provs =
         styleImagesProviders.map((provider) => watch(provider)).toList();
 
-    print(styleImagesProviders.length);
     return Scaffold(
       appBar: desktopAppBar(context: context, label: "Style Store"),
       floatingActionButton: StyledButton(
