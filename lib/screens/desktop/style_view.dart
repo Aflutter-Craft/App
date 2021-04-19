@@ -15,32 +15,33 @@ class StyleView extends ConsumerWidget {
 
     print(styleImagesProviders.length);
     return Scaffold(
-        appBar: desktopAppBar(context: context, enableBack: true),
-        body: GridView.builder(
-          padding: EdgeInsets.all(30),
-          primary: true,
-          scrollDirection: Axis.vertical,
-          itemCount: 100,
-          physics: BouncingScrollPhysics(),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 4,
-            childAspectRatio: 1,
-            crossAxisSpacing: 20,
-            mainAxisSpacing: 20,
+      appBar: desktopAppBar(context: context, enableBack: true),
+      body: GridView.builder(
+        padding: EdgeInsets.all(30),
+        primary: true,
+        scrollDirection: Axis.vertical,
+        itemCount: 100,
+        physics: BouncingScrollPhysics(),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 4,
+          childAspectRatio: 1,
+          crossAxisSpacing: 20,
+          mainAxisSpacing: 20,
+        ),
+        itemBuilder: (context, index) => prov.when(
+          data: (data) => Column(
+            children: [
+              NetworkImageContainer(
+                imgName: data[index],
+              ),
+            ],
           ),
-          itemBuilder: (context, index) => prov.when(
-            data: (data) => Column(
-              children: [
-                NetworkImageContainer(
-                  imgName: data[index],
-                ),
-              ],
-            ),
-            loading: () => CupertinoActivityIndicator(),
-            error: (err, stack) => Text(
-              err.toString(),
-            ),
+          loading: () => CupertinoActivityIndicator(),
+          error: (err, stack) => Text(
+            err.toString(),
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
