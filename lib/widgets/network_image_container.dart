@@ -29,7 +29,10 @@ class NetworkImageContainer extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               color: Colors.white,
-              image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
+              image: DecorationImage(
+                image: imageProvider,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
         ),

@@ -1,5 +1,7 @@
+import 'package:aflutter_craft/screens/screens.dart';
 import 'package:aflutter_craft/utils/utils.dart';
 import 'package:aflutter_craft/widgets/widgets.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -17,6 +19,7 @@ class StyleStore extends ConsumerWidget {
         appBar: desktopAppBar(context: context),
         body: GridView.builder(
           padding: EdgeInsets.all(30),
+          primary: true,
           scrollDirection: Axis.vertical,
           itemCount: provs.length,
           physics: BouncingScrollPhysics(),
@@ -29,7 +32,20 @@ class StyleStore extends ConsumerWidget {
           itemBuilder: (context, index) => provs[index].when(
             data: (data) => Column(
               children: [
-                NetworkImageContainer(imgName: data[randomNumber]),
+                Expanded(
+                  child: InkWell(
+                    onTap: () => Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (context) =>
+                            StyleView(provider: styleImagesProviders[index]),
+                      ),
+                    ),
+                    child: NetworkImageContainer(
+                      imgName: data[randomNumber],
+                    ),
+                  ),
+                ),
                 SizedBox(height: 10),
                 Text(
                   Categories.values[index]

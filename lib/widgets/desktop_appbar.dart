@@ -3,24 +3,24 @@ import 'package:aflutter_craft/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-PreferredSizeWidget? desktopAppBar({context}) {
+PreferredSizeWidget? desktopAppBar({context, enableBack = false}) {
   return AppBar(
     actions: [
       Padding(
-        padding: const EdgeInsets.only(right: 20),
+        padding: const EdgeInsets.only(right: 56),
         child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             buildLink(label: "Community", route: DesktopHome()),
-            SizedBox(width: 20),
+            SizedBox(width: 30),
             buildLink(
               label: "Style Store",
               route: StyleStore(),
               context: context,
             ),
-            SizedBox(width: 20),
+            SizedBox(width: 30),
             buildLink(
               label: "About",
               route: About(),
@@ -37,8 +37,11 @@ PreferredSizeWidget? desktopAppBar({context}) {
     ),
     elevation: 0,
     backgroundColor: AppColors.accentColor,
-    leading: Container(),
-    leadingWidth: 0,
+    leading: enableBack ? null : Container(),
+    titleSpacing: 0,
+    iconTheme: IconThemeData(
+      color: Colors.white,
+    ),
   );
 }
 
@@ -48,6 +51,7 @@ Widget buildLink({label, route, context}) {
       context,
       CupertinoPageRoute(
         fullscreenDialog: true,
+        title: label,
         builder: (context) => route,
       ),
     ),
