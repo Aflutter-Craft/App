@@ -17,54 +17,55 @@ class StyleStore extends ConsumerWidget {
 
     print(styleImagesProviders.length);
     return Scaffold(
-        appBar: desktopAppBar(context: context),
-        body: GridView.builder(
-          padding: EdgeInsets.all(30),
-          primary: true,
-          scrollDirection: Axis.vertical,
-          itemCount: provs.length,
-          physics: BouncingScrollPhysics(),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 4,
-            childAspectRatio: 1,
-            crossAxisSpacing: 20,
-            mainAxisSpacing: 20,
-          ),
-          itemBuilder: (context, index) => provs[index].when(
-            data: (data) => Column(
-              children: [
-                Expanded(
-                  child: InkWell(
-                    onTap: () => Navigator.push(
-                      context,
-                      CupertinoPageRoute(
-                        builder: (context) =>
-                            StyleView(provider: styleImagesProviders[index]),
-                      ),
+      appBar: desktopAppBar(context: context),
+      body: GridView.builder(
+        padding: EdgeInsets.all(30),
+        primary: true,
+        scrollDirection: Axis.vertical,
+        itemCount: provs.length,
+        physics: BouncingScrollPhysics(),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 4,
+          childAspectRatio: 1,
+          crossAxisSpacing: 20,
+          mainAxisSpacing: 20,
+        ),
+        itemBuilder: (context, index) => provs[index].when(
+          data: (data) => Column(
+            children: [
+              Expanded(
+                child: InkWell(
+                  onTap: () => Navigator.push(
+                    context,
+                    CupertinoPageRoute(
+                      builder: (context) =>
+                          StyleView(provider: styleImagesProviders[index]),
                     ),
-                    child: NetworkImageContainer(
-                      imgName: data[randomNumber],
-                    ),
+                  ),
+                  child: NetworkImageContainer(
+                    imgName: data[randomNumber],
                   ),
                 ),
-                SizedBox(height: 10),
-                Text(
-                  Categories.values[index]
-                      .toShortString()
-                      .replaceAll("-", " ")
-                      .toTitleCase(),
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w400,
-                  ),
-                )
-              ],
-            ),
-            loading: () => CircularProgressIndicator(),
-            error: (err, stack) => Text(
-              err.toString(),
-            ),
+              ),
+              SizedBox(height: 10),
+              Text(
+                Categories.values[index]
+                    .toShortString()
+                    .replaceAll("-", " ")
+                    .toTitleCase(),
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w400,
+                ),
+              )
+            ],
           ),
-        ));
+          loading: () => CircularProgressIndicator(),
+          error: (err, stack) => Text(
+            err.toString(),
+          ),
+        ),
+      ),
+    );
   }
 }
