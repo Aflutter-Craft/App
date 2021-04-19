@@ -1,15 +1,53 @@
+import 'package:aflutter_craft/utils/utils.dart';
 import 'package:aflutter_craft/widgets/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class StyleStore extends HookWidget {
+class StyleStore extends ConsumerWidget {
   StyleStore({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ScopedReader watch) {
+    // watch all 14 providers at the same time (this is big brain code)
+    var provs =
+        styleImagesProviders.map((provider) => watch(provider)).toList();
+
+    print(styleImagesProviders.length);
     return Scaffold(
-      appBar: desktopAppBar(context: context),
-      body: Container(),
-    );
+        appBar: desktopAppBar(context: context),
+        body: GridView.builder(
+          padding: EdgeInsets.all(30),
+          scrollDirection: Axis.vertical,
+          itemCount: provs.length,
+          physics: BouncingScrollPhysics(),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 4,
+            childAspectRatio: 1,
+            crossAxisSpacing: 20,
+            mainAxisSpacing: 20,
+          ),
+          itemBuilder: (context, index) => provs[index].when(
+            data: (data) => Column(
+              children: [
+                NetworkImageContainer(imgName: data[randomNumber]),
+                SizedBox(height: 10),
+                Text(
+                  Categories.values[index]
+                      .toShortString()
+                      .replaceAll("-", " ")
+                      .toTitleCase(),
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w400,
+                  ),
+                )
+              ],
+            ),
+            loading: () => CircularProgressIndicator(),
+            error: (err, stack) => Text(
+              err.toString(),
+            ),
+          ),
+        ));
   }
 }
