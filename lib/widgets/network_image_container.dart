@@ -11,28 +11,26 @@ class NetworkImageContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
-    return Expanded(
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(20),
-        child: CachedNetworkImage(
-          imageUrl: BUCKET_PREFIX + imgName!,
-          placeholder: (context, url) => SizedBox(
-            height: height * 0.4,
-            width: height * 0.4,
-            child: Center(
-              child: CupertinoActivityIndicator(),
-            ),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(20),
+      child: CachedNetworkImage(
+        imageUrl: BUCKET_PREFIX + imgName!,
+        placeholder: (context, url) => SizedBox(
+          height: height * 0.4,
+          width: height * 0.4,
+          child: Center(
+            child: CupertinoActivityIndicator(),
           ),
-          imageBuilder: (context, imageProvider) => Container(
-            width: height * 0.4,
-            height: height * 0.4,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: Colors.white,
-              image: DecorationImage(
-                image: imageProvider,
-                fit: BoxFit.cover,
-              ),
+        ),
+        imageBuilder: (context, imageProvider) => Container(
+          width: height * 0.4,
+          height: height * 0.4,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color: Colors.white,
+            image: DecorationImage(
+              image: imageProvider,
+              fit: BoxFit.cover,
             ),
           ),
         ),
