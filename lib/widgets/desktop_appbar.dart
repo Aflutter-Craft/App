@@ -13,47 +13,46 @@ PreferredSizeWidget? desktopAppBar({context}) {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            buildLink(label: "Community", link: () => {}),
+            buildLink(label: "Community", route: DesktopHome()),
             SizedBox(width: 20),
             buildLink(
               label: "Style Store",
-              link: () => Navigator.push(
-                context,
-                CupertinoPageRoute(
-                  builder: (context) => StyleStore(),
-                ),
-              ),
+              route: StyleStore(),
+              context: context,
             ),
             SizedBox(width: 20),
             buildLink(
               label: "About",
-              link: () => Navigator.push(
-                context,
-                CupertinoPageRoute(
-                  builder: (context) => About(),
-                ),
-              ),
+              route: About(),
+              context: context,
             ),
           ],
         ),
       )
     ],
-    title: Text(
-      "Aflutter Craft",
-      style: TextStyle(
-        fontWeight: FontWeight.w400,
-        color: Colors.white,
-      ),
+    title: buildLink(
+      label: "Aflutter Craft",
+      route: DesktopHome(),
+      context: context,
     ),
     elevation: 0,
     backgroundColor: AppColors.accentColor,
+    leading: Container(),
+    leadingWidth: 0,
   );
 }
 
-Widget buildLink({label, link}) {
+Widget buildLink({label, route, context}) {
   return InkWell(
-    onTap: link,
+    onTap: () => Navigator.pushReplacement(
+      context,
+      CupertinoPageRoute(
+        fullscreenDialog: true,
+        builder: (context) => route,
+      ),
+    ),
     enableFeedback: false,
+    hoverColor: Colors.transparent,
     child: Text(
       label,
       style: TextStyle(color: Colors.white),
