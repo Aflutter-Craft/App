@@ -4,44 +4,34 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 PreferredSizeWidget? desktopAppBar({context, label = "Aflutter Craft"}) {
+  List actions = ["Community", "Style Store", "About"];
+  List routes = [DesktopHome(), StyleStore(), About()];
   return AppBar(
     actions: [
-      Padding(
-        padding: const EdgeInsets.only(right: 30),
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            buildLink(
-                label: "Community",
-                routeFun: makeRoute(
-                  label: "Community",
-                  context: context,
-                  route: DesktopHome(),
-                )),
-            SizedBox(width: 30),
-            buildLink(
-              label: "Style Store",
-              routeFun: makeRoute(
-                label: "Style Store",
-                context: context,
-                route: StyleStore(),
-              ),
-              context: context,
-            ),
-            SizedBox(width: 30),
-            buildLink(
-              label: "About",
-              routeFun: makeRoute(
-                label: "About",
-                context: context,
-                route: About(),
-              ),
-              context: context,
-            ),
-          ],
-        ),
+      Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          ...actions.map(
+            (action) {
+              // this is not very efficient when there are many elements in actions
+              var index = actions.indexOf(action);
+              return Row(
+                children: [
+                  buildLink(
+                      label: action,
+                      routeFun: makeRoute(
+                        label: action,
+                        context: context,
+                        route: routes[index],
+                      )),
+                  SizedBox(width: 30),
+                ],
+              );
+            },
+          ),
+        ],
       )
     ],
     title: buildLink(
