@@ -8,7 +8,7 @@ class About extends HookWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: desktopAppBar(context: context),
+      appBar: desktopAppBar(context: context, label: "About"),
       body: Container(),
     );
   }

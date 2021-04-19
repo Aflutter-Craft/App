@@ -17,7 +17,7 @@ class StyleStore extends ConsumerWidget {
 
     print(styleImagesProviders.length);
     return Scaffold(
-      appBar: desktopAppBar(context: context),
+      appBar: desktopAppBar(context: context, label: "Style Store"),
       body: GridView.builder(
         padding: EdgeInsets.all(30),
         primary: true,
@@ -38,8 +38,13 @@ class StyleStore extends ConsumerWidget {
                   onTap: () => Navigator.push(
                     context,
                     CupertinoPageRoute(
-                      builder: (context) =>
-                          StyleView(provider: styleImagesProviders[index]),
+                      builder: (context) => StyleView(
+                        provider: styleImagesProviders[index],
+                        category: Categories.values[index]
+                            .toShortString()
+                            .replaceAll("-", " ")
+                            .toTitleCase(),
+                      ),
                     ),
                   ),
                   child: NetworkImageContainer(
