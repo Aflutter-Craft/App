@@ -1,5 +1,6 @@
 import 'package:aflutter_craft/screens/screens.dart';
 import 'package:aflutter_craft/utils/utils.dart';
+import 'package:aflutter_craft/widgets/image_detail_screen.dart';
 import 'package:aflutter_craft/widgets/widgets.dart';
 import 'package:file_selector/file_selector.dart';
 import 'package:flutter/cupertino.dart';
@@ -29,8 +30,19 @@ class DesktopHome extends HookWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    ImageContainer(
-                      image: content,
+                    GestureDetector(
+                      onTap: () => Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                          fullscreenDialog: true,
+                          builder: (context) => ImageDetailScreen(
+                            image: content,
+                          ),
+                        ),
+                      ),
+                      child: ImageContainer(
+                        image: content,
+                      ),
                     ),
                     SizedBox(height: 20),
                     StyledButton(
@@ -55,8 +67,19 @@ class DesktopHome extends HookWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    ImageContainer(
-                      image: style,
+                    GestureDetector(
+                      onTap: () => Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                          fullscreenDialog: true,
+                          builder: (context) => ImageDetailScreen(
+                            image: style,
+                          ),
+                        ),
+                      ),
+                      child: ImageContainer(
+                        image: style,
+                      ),
                     ),
                     SizedBox(height: 20),
                     StyledButton(
@@ -75,8 +98,19 @@ class DesktopHome extends HookWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    ImageContainer(
-                      image: result,
+                    GestureDetector(
+                      onTap: () => Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                          fullscreenDialog: true,
+                          builder: (context) => ImageDetailScreen(
+                            image: result,
+                          ),
+                        ),
+                      ),
+                      child: ImageContainer(
+                        image: result,
+                      ),
                     ),
                     SizedBox(height: 20),
                     Row(
