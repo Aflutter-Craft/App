@@ -9,11 +9,8 @@ class ImageDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => Navigator.pop(context),
-      child: AlertDialog(
-        backgroundColor: Colors.transparent,
-        content: Image(
-          image: image,
-        ),
+      child: Center(
+        child: Image(image: image),
       ),
     );
   }
