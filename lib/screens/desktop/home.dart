@@ -120,27 +120,35 @@ class DesktopHome extends HookWidget {
                         StyledButton(
                           btnLabel: "Save",
                           icon: Icons.download_outlined,
-                          onPressed: () async {
-                            // retrive image from temp directory
-                            // using the caching functionality of CachedNetworkImage
-                            final cache = DefaultCacheManager();
+                          // only enable the save functionality when
+                          // style transfer has already been performed
+                          // if it has already been performed
+                          // the result type will be CachedNetworkImageProvider
+                          onPressed: result is AssetImage
+                              ? null
+                              : () async {
+                                  // retrive image from temp directory
+                                  // using the caching functionality of CachedNetworkImage
+                                  final cache = DefaultCacheManager();
+                                  final file =
+                                      await cache.getSingleFile(result.url);
 
-                            // this will only work if the result is a CachedNetworkImageProvider
-                            final file = await cache.getSingleFile(result.url);
+                                  // get system documents path
+                                  final path =
+                                      (await getApplicationDocumentsDirectory())
+                                          .path;
 
-                            // get system documents path
-                            final path =
-                                (await getApplicationDocumentsDirectory()).path;
-
-                            // copy the file from cache to user directory
-                            await file.copy(path + file.basename);
-                          },
+                                  // copy the file from cache to user directory
+                                  await file.copy(path + file.basename);
+                                },
                         ),
                         SizedBox(width: 70),
                         StyledButton(
                           btnLabel: "Share",
                           icon: Icons.share_rounded,
-                          onPressed: () => {},
+                          // only enable the save functionality when
+                          // style transfer has already been performed
+                          onPressed: result is AssetImage ? null : () => {},
                         )
                       ],
                     ),
