@@ -1,6 +1,5 @@
 import 'package:aflutter_craft/screens/screens.dart';
 import 'package:aflutter_craft/utils/utils.dart';
-import 'package:aflutter_craft/widgets/desktop_share.dart';
 import 'package:aflutter_craft/widgets/widgets.dart';
 import 'package:file_selector/file_selector.dart';
 import 'package:flutter/cupertino.dart';
@@ -100,43 +99,30 @@ class DesktopHome extends ConsumerWidget {
                       ),
                     ),
                     SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        StyledButton(
-                          btnLabel: "Save",
-                          icon: Icons.download_outlined,
-                          // only enable the save functionality when
-                          // style transfer has already been performed
-                          // if it has already been performed
-                          // the result type will be CachedNetworkImageProvider
-                          onPressed: result is AssetImage
-                              ? null
-                              : () async {
-                                  // retrive image from temp directory
-                                  // using the caching functionality of CachedNetworkImage
-                                  final cache = DefaultCacheManager();
-                                  final file =
-                                      await cache.getSingleFile(result.url);
+                    StyledButton(
+                      btnLabel: "Save Image",
+                      icon: Icons.download_outlined,
+                      // only enable the save functionality when
+                      // style transfer has already been performed
+                      // if it has already been performed
+                      // the result type will be CachedNetworkImageProvider
+                      onPressed: result is AssetImage
+                          ? null
+                          : () async {
+                              // retrive image from temp directory
+                              // using the caching functionality of CachedNetworkImage
+                              final cache = DefaultCacheManager();
+                              final file =
+                                  await cache.getSingleFile(result.url);
 
-                                  // get system documents path
-                                  final path =
-                                      (await getApplicationDocumentsDirectory())
-                                          .path;
+                              // get system documents path
+                              final path =
+                                  (await getApplicationDocumentsDirectory())
+                                      .path;
 
-                                  // copy the file from cache to user directory
-                                  await file.copy(path + file.basename);
-                                },
-                        ),
-                        SizedBox(width: 70),
-                        StyledButton(
-                          btnLabel: "Share",
-                          icon: Icons.share_rounded,
-                          // only enable the save functionality when
-                          // style transfer has already been performed
-                          onPressed: result is AssetImage ? null : () => {},
-                        )
-                      ],
+                              // copy the file from cache to user directory
+                              await file.copy(path + file.basename);
+                            },
                     ),
                   ],
                 ),
