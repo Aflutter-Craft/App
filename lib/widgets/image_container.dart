@@ -30,7 +30,7 @@ class ImageContainer extends StatelessWidget {
         ],
         image: DecorationImage(
           image: image,
-          fit: BoxFit.fill,
+          fit: BoxFit.cover,
         ),
       ),
     );
