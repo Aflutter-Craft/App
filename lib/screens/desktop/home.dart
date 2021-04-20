@@ -12,6 +12,12 @@ import 'package:path_provider/path_provider.dart';
 class DesktopHome extends HookWidget {
   DesktopHome({Key? key}) : super(key: key);
 
+  showImage({image, context}) async {
+    await showDialog(
+        barrierColor: Colors.black54,
+        context: context,
+        builder: (context) => ImageDetailScreen(image: image));
+  }
   @override
   Widget build(BuildContext context) {
     var content = useProvider(contentProvider);
@@ -32,15 +38,8 @@ class DesktopHome extends HookWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     GestureDetector(
-                      onTap: () => Navigator.push(
-                        context,
-                        CupertinoPageRoute(
-                          fullscreenDialog: true,
-                          builder: (context) => ImageDetailScreen(
-                            image: content,
-                          ),
-                        ),
-                      ),
+                      onTap: () async =>
+                          showImage(context: context, image: content),
                       child: ImageContainer(
                         image: content,
                       ),
@@ -69,15 +68,8 @@ class DesktopHome extends HookWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     GestureDetector(
-                      onTap: () => Navigator.push(
-                        context,
-                        CupertinoPageRoute(
-                          fullscreenDialog: true,
-                          builder: (context) => ImageDetailScreen(
-                            image: style,
-                          ),
-                        ),
-                      ),
+                      onTap: () async =>
+                          showImage(context: context, image: style),
                       child: ImageContainer(
                         image: style,
                       ),
@@ -100,15 +92,8 @@ class DesktopHome extends HookWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     GestureDetector(
-                      onTap: () => Navigator.push(
-                        context,
-                        CupertinoPageRoute(
-                          fullscreenDialog: true,
-                          builder: (context) => ImageDetailScreen(
-                            image: result,
-                          ),
-                        ),
-                      ),
+                      onTap: () async =>
+                          showImage(context: context, image: result),
                       child: ImageContainer(
                         image: result,
                       ),
