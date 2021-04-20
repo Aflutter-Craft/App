@@ -3,7 +3,7 @@ import 'package:aflutter_craft/widgets/widgets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class StyleView extends ConsumerWidget {
   StyleView({this.category, this.provider, Key? key}) : super(key: key);

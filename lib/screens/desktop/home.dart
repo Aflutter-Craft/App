@@ -1,15 +1,15 @@
 import 'package:aflutter_craft/screens/screens.dart';
 import 'package:aflutter_craft/utils/utils.dart';
+import 'package:aflutter_craft/widgets/desktop_share.dart';
 import 'package:aflutter_craft/widgets/widgets.dart';
 import 'package:file_selector/file_selector.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path_provider/path_provider.dart';
 
-class DesktopHome extends HookWidget {
+class DesktopHome extends ConsumerWidget {
   DesktopHome({Key? key}) : super(key: key);
 
   showImage({image, context}) async {
@@ -18,11 +18,12 @@ class DesktopHome extends HookWidget {
         context: context,
         builder: (context) => ImageDetailScreen(image: image));
   }
+
   @override
-  Widget build(BuildContext context) {
-    var content = useProvider(contentProvider);
-    var style = useProvider(styleProvider);
-    var result = useProvider(resultProvider);
+  Widget build(BuildContext context, ScopedReader watch) {
+    var content = watch(contentProvider);
+    var style = watch(styleProvider);
+    var result = watch(resultProvider);
     return Scaffold(
       appBar: desktopAppBar(context: context),
       body: Container(
