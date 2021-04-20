@@ -13,6 +13,8 @@ class StyleStore extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
     // watch all 14 providers at the same time (this is big brain code)
+    // no need to use hookwidget for auto dispose becuase all
+    // these providers are auto disposable
     var provs =
         styleImagesProviders.map((provider) => watch(provider)).toList();
 
