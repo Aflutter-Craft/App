@@ -39,6 +39,8 @@ dependencies:
   file_selector_macos: any
   cached_network_image: any
   social_share: any
+  flutter_cache_manager: any
+  path_provider: any
 
 dev_dependencies:
   flutter_test:

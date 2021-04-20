@@ -4,8 +4,10 @@ import 'package:aflutter_craft/widgets/widgets.dart';
 import 'package:file_selector/file_selector.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:path_provider/path_provider.dart';
 
 class DesktopHome extends HookWidget {
   DesktopHome({Key? key}) : super(key: key);
@@ -118,7 +120,21 @@ class DesktopHome extends HookWidget {
                         StyledButton(
                           btnLabel: "Save",
                           icon: Icons.download_outlined,
-                          onPressed: () => {},
+                          onPressed: () async {
+                            // retrive image from temp directory
+                            // using the caching functionality of CachedNetworkImage
+                            final cache = DefaultCacheManager();
+
+                            // this will only work if the result is a CachedNetworkImageProvider
+                            final file = await cache.getSingleFile(result.url);
+
+                            // get system documents path
+                            final path =
+                                (await getApplicationDocumentsDirectory()).path;
+
+                            // copy the file from cache to user directory
+                            await file.copy(path + file.basename);
+                          },
                         ),
                         SizedBox(width: 70),
                         StyledButton(
