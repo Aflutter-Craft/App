@@ -1,6 +1,5 @@
 import 'package:aflutter_craft/screens/screens.dart';
 import 'package:aflutter_craft/utils/utils.dart';
-import 'package:aflutter_craft/widgets/image_detail_screen.dart';
 import 'package:aflutter_craft/widgets/widgets.dart';
 import 'package:file_selector/file_selector.dart';
 import 'package:flutter/cupertino.dart';
