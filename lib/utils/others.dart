@@ -30,7 +30,7 @@ import 'package:flutter/services.dart';
 //  generate random index image to be shown as cover for style
 // this is done once per app run
 Random random = new Random();
-int randomNumber = random.nextInt(99) + 1; // from 10 upto 99 included
+int randomNumber = random.nextInt(99) + 1; // from 1 upto 99 included
 
 const String BUCKET_PREFIX = "https://aflutter-craft.s3.amazonaws.com/styles/";
 
