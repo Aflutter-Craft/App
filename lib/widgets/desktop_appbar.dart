@@ -1,4 +1,3 @@
-import 'package:aflutter_craft/screens/desktop/community.dart';
 import 'package:aflutter_craft/screens/desktop/desktop.dart';
 import 'package:aflutter_craft/utils/utils.dart';
 import 'package:flutter/cupertino.dart';

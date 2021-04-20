@@ -10,11 +10,21 @@ class DesktopCommunity extends HookWidget {
     return Scaffold(
       appBar: desktopAppBar(context: context, label: "Community"),
       body: Center(
-        child: Text(
-          "Coming Soon...",
-          style: TextStyle(
-            fontSize: 34,
-          ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.timer,
+              size: 34,
+            ),
+            SizedBox(width: 10),
+            Text(
+              "Coming Soon...",
+              style: TextStyle(
+                fontSize: 34,
+              ),
+            ),
+          ],
         ),
       ),
     );
