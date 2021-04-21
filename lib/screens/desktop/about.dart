@@ -52,6 +52,7 @@ class About extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
                           ques[index],
@@ -78,7 +79,7 @@ class About extends StatelessWidget {
                                 image: AssetImage("assets/images/network.png"),
                                 alignment: Alignment.center,
                               ),
-                              SizedBox(height: 10),
+                              SizedBox(height: 30),
                               Image(
                                 image:
                                     AssetImage("assets/images/attention.png"),
