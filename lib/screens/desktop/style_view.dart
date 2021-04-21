@@ -18,44 +18,47 @@ class StyleView extends ConsumerWidget {
 
     return Scaffold(
       appBar: desktopAppBar(context: context, label: category),
-      body: GridView.builder(
-        padding: EdgeInsets.all(30),
-        primary: true,
-        scrollDirection: Axis.vertical,
-        itemCount: 100,
-        physics: BouncingScrollPhysics(),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 4,
-          childAspectRatio: 1,
-          crossAxisSpacing: 20,
-          mainAxisSpacing: 20,
-        ),
-        itemBuilder: (context, index) => prov.when(
-          data: (data) => Column(
-            children: [
-              InkWell(
-                onTap: () {
-                  // update the content image provider(will update the ui image)
-                  context.read(styleProvider.notifier).setImage(
-                        CachedNetworkImageProvider(
-                          BUCKET_PREFIX + data[index],
-                        ),
-                      );
-
-                  // pop navigator twice to return to main page
-                  final nav = Navigator.of(context);
-                  nav.pop();
-                  nav.pop();
-                },
-                child: NetworkImageContainer(
-                  imgName: data[index],
-                ),
-              ),
-            ],
+      body: Scrollbar(
+        isAlwaysShown: true,
+        child: GridView.builder(
+          padding: EdgeInsets.all(30),
+          primary: true,
+          scrollDirection: Axis.vertical,
+          itemCount: 100,
+          physics: BouncingScrollPhysics(),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 4,
+            childAspectRatio: 1,
+            crossAxisSpacing: 20,
+            mainAxisSpacing: 20,
           ),
-          loading: () => CupertinoActivityIndicator(),
-          error: (err, stack) => Text(
-            err.toString(),
+          itemBuilder: (context, index) => prov.when(
+            data: (data) => Column(
+              children: [
+                InkWell(
+                  onTap: () {
+                    // update the content image provider(will update the ui image)
+                    context.read(styleProvider.notifier).setImage(
+                          CachedNetworkImageProvider(
+                            BUCKET_PREFIX + data[index],
+                          ),
+                        );
+
+                    // pop navigator twice to return to main page
+                    final nav = Navigator.of(context);
+                    nav.pop();
+                    nav.pop();
+                  },
+                  child: NetworkImageContainer(
+                    imgName: data[index],
+                  ),
+                ),
+              ],
+            ),
+            loading: () => CupertinoActivityIndicator(),
+            error: (err, stack) => Text(
+              err.toString(),
+            ),
           ),
         ),
       ),
