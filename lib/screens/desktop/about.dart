@@ -56,8 +56,9 @@ class About extends StatelessWidget {
                         Text(
                           ques[index],
                           style: TextStyle(
-                              color: AppColors.accentColor,
-                              fontWeight: FontWeight.bold),
+                            color: AppColors.accentColor,
+                            fontWeight: FontWeight.bold,
+                          ),
                           textAlign: TextAlign.left,
                         ),
                         SizedBox(height: 10),
@@ -97,9 +98,9 @@ class About extends StatelessWidget {
                 Text(
                   "Copyright © Blacksuan19",
                   style: TextStyle(
-                    color: Colors.black38,
+                    color: Colors.grey[400],
+                    fontSize: 12,
                   ),
-                  textAlign: TextAlign.start,
                 )
               ],
             ),
