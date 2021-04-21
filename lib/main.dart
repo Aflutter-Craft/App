@@ -1,11 +1,12 @@
 import 'dart:io';
 
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:window_size/window_size.dart';
+
 import 'package:aflutter_craft/screens/screens.dart';
 import 'package:aflutter_craft/utils/theme.dart';
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:window_size/window_size.dart';
 
 void main() {
   runApp(ProviderScope(child: MyApp()));

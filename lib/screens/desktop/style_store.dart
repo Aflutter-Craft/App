@@ -1,11 +1,12 @@
-import 'package:aflutter_craft/models/models.dart';
-import 'package:aflutter_craft/screens/desktop/desktop.dart';
-import 'package:aflutter_craft/utils/utils.dart';
-import 'package:aflutter_craft/widgets/widgets.dart';
 import 'package:file_selector/file_selector.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'package:aflutter_craft/models/models.dart';
+import 'package:aflutter_craft/screens/desktop/desktop.dart';
+import 'package:aflutter_craft/utils/utils.dart';
+import 'package:aflutter_craft/widgets/widgets.dart';
 
 class StyleStore extends ConsumerWidget {
   StyleStore({Key? key}) : super(key: key);
