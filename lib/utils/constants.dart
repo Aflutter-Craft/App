@@ -24,3 +24,5 @@ Figure below shows the model architecture, attention module architecture and ide
 - Application -> Flutter
 
 Figure below shows the overall process of styling an image.''';
+
+const String PER_SITE = "https://blacksuan19.tk/";
