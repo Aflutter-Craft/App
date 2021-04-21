@@ -1,7 +1,8 @@
-import 'package:aflutter_craft/screens/desktop/desktop.dart';
-import 'package:aflutter_craft/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'package:aflutter_craft/screens/desktop/desktop.dart';
+import 'package:aflutter_craft/utils/utils.dart';
 
 PreferredSizeWidget? desktopAppBar({context, label = "Aflutter Craft"}) {
   List actions = ["Community", "Style Store", "About"];
