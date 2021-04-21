@@ -38,6 +38,7 @@ dependencies:
   social_share: any
   flutter_cache_manager: any
   path_provider: any
+  url_launcher: any
   window_size:
     git:
       url: git://github.com/google/flutter-desktop-embedding.git

@@ -2,6 +2,7 @@ import 'package:aflutter_craft/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 import 'package:aflutter_craft/widgets/widgets.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class About extends StatelessWidget {
   About({Key? key}) : super(key: key);
@@ -96,11 +97,31 @@ class About extends StatelessWidget {
                   },
                 ),
                 SizedBox(height: 30),
-                Text(
-                  "Copyright © Blacksuan19",
-                  style: TextStyle(
-                    color: Colors.grey[400],
-                    fontSize: 12,
+                Text.rich(
+                  TextSpan(
+                    text: "Copyright © ",
+                    children: [
+                      WidgetSpan(
+                        child: InkWell(
+                          onTap: () async {
+                            await canLaunch(PER_SITE)
+                                ? launch(PER_SITE)
+                                : throw "could not luanch $PER_SITE";
+                          },
+                          child: Text(
+                            "Blacksuan19",
+                            style: TextStyle(
+                              color: Colors.blue[200],
+                              fontSize: 12,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                    style: TextStyle(
+                      color: Colors.grey[400],
+                      fontSize: 12,
+                    ),
                   ),
                 )
               ],
