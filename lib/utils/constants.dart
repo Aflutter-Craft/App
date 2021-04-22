@@ -7,7 +7,8 @@ A platform for style transfer with neural networks
 // !! is used as a delimeter to split the questions and answers
 const String QUES = '''
 How does it work?!!
-What is the tech stack?''';
+What is the tech stack?!!
+Where can i download those style images?''';
 
 const String ANS = '''
 The backbone of the application is a Convolutional Neural Network(CNN) with a very complex network architecutre containting a total of 3 models:
@@ -23,6 +24,6 @@ Figure below shows the model architecture, attention module architecture and ide
 - API -> python, FastAPI
 - Application -> Flutter
 
-Figure below shows the overall process of styling an image.''';
+Figure below shows the overall process of styling an image.\n!!The style images are taken from wikiart.com wikipedia's equivalent for art.''';
 
 const String PER_SITE = "https://blacksuan19.tk/";
