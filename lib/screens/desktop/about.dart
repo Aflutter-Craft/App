@@ -91,7 +91,7 @@ class About extends StatelessWidget {
                         else if (index == 1)
                           Image(
                             image: AssetImage("assets/images/api.png"),
-                          ),
+                          )
                       ],
                     );
                   },
