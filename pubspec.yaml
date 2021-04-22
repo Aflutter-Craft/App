@@ -39,6 +39,7 @@ dependencies:
   flutter_cache_manager: any
   path_provider: any
   url_launcher: any
+  flutter_launcher_icons: any
   window_size:
     git:
       url: git://github.com/google/flutter-desktop-embedding.git
@@ -103,3 +104,11 @@ flutter_native_splash:
   ios_content_mode: center
   web_image_mode: center
   fullscreen: true
+
+flutter_icons:
+  ios: true
+  android: true
+  image_path: "assets/images/logo.png"
+  remove_alpha_ios: true
+  adaptive_icon_background: "#ff4151"
+  adaptive_icon_foreground: "assets/images/logo.png"
