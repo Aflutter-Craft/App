@@ -4,18 +4,22 @@ import 'package:flutter/material.dart';
 
 class ImageContainer extends StatelessWidget {
   final image;
+  final ratio;
 
   const ImageContainer({
     Key? key,
     this.image,
+    this.ratio = 0.55,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
+    var conSize = size.height * ratio;
+
     return Container(
-      width: size.height * 0.55,
-      height: size.height * 0.55,
+      width: conSize,
+      height: conSize,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
