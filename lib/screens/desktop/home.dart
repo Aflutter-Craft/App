@@ -12,13 +12,6 @@ import 'package:aflutter_craft/widgets/widgets.dart';
 class DesktopHome extends ConsumerWidget {
   DesktopHome({Key? key}) : super(key: key);
 
-  showImage({image, context}) async {
-    await showDialog(
-        barrierColor: Colors.black54,
-        context: context,
-        builder: (context) => ImageDetailScreen(image: image));
-  }
-
   @override
   Widget build(BuildContext context, ScopedReader watch) {
     var content = watch(contentProvider);
