@@ -127,7 +127,9 @@ class DesktopHome extends ConsumerWidget {
             StyledButton(
               btnLabel: "Apply Style",
               icon: Icons.check_circle,
-              onPressed: () => {},
+              // only enable the button when the current
+              // style and content are not the default ones
+              onPressed: checkDefault(style, content) ? null : () => {},
             )
           ],
         ),

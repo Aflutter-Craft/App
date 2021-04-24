@@ -41,3 +41,10 @@ getImagesList({category}) async {
 
   return filesList;
 }
+
+// check if the current style and content images are the default ones
+// used to enable the style transfer button
+bool checkDefault(content, style) {
+  return content.toString().contains("default") ||
+      style.toString().contains("default");
+}
