@@ -4,7 +4,7 @@ import 'package:aflutter_craft/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-PreferredSizeWidget? desktopAppBar({context, label = "Aflutter Craft"}) {
+PreferredSizeWidget? desktopAppBar({context, label = APP_NAME}) {
   List actions = ["Community", "Style Store", "About"];
   List routes = [DesktopCommunity(), StyleStore(rowSize: 4), About()];
   return AppBar(
@@ -40,7 +40,7 @@ PreferredSizeWidget? desktopAppBar({context, label = "Aflutter Craft"}) {
     title: buildLink(
       label: label,
       context: context,
-      routeFun: label == "Aflutter Craft"
+      routeFun: label == APP_NAME
           ? makeRoute(
               label: label,
               context: context,
