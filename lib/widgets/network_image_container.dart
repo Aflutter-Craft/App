@@ -16,15 +16,15 @@ class NetworkImageContainer extends StatelessWidget {
       child: CachedNetworkImage(
         imageUrl: BUCKET_PREFIX + imgName!,
         placeholder: (context, url) => SizedBox(
-          height: height * 0.4,
-          width: height * 0.4,
+          height: height * 0.6,
+          width: height * 0.6,
           child: Center(
             child: CupertinoActivityIndicator(),
           ),
         ),
         imageBuilder: (context, imageProvider) => Container(
-          width: height * 0.4,
-          height: height * 0.4,
+          width: height * 0.6,
+          height: height * 0.6,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             color: Colors.white,
