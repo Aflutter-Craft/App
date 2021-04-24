@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
-
 import 'package:aflutter_craft/utils/utils.dart';
+import 'package:flutter/material.dart';
 
 class StyledButton extends StatelessWidget {
   final String btnLabel;

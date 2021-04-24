@@ -1,8 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:riverpod/riverpod.dart';
-
 import 'package:aflutter_craft/models/models.dart';
 import 'package:aflutter_craft/utils/utils.dart';
+import 'package:flutter/material.dart';
+import 'package:riverpod/riverpod.dart';
 
 final contentProvider = StateNotifierProvider(
   (ref) => AppImage(
