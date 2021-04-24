@@ -1,3 +1,5 @@
+const String APP_NAME = "Aflutter Craft";
+
 const String BUCKET_PREFIX = "https://aflutter-craft.s3.amazonaws.com/styles/";
 
 const String APP_DISC = '''\n
