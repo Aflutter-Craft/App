@@ -100,69 +100,74 @@ class _StyleStoreState extends State<StyleStore> with TickerProviderStateMixin {
             },
           ),
         ),
-        body: Consumer(builder: (context, watch, child) {
-          // watch all 14 providers at the same time (this is big brain code)
-          // no need to use hookwidget for auto dispose becuase all
-          // these providers are auto disposable
-          var provs =
-              styleImagesProviders.map((provider) => watch(provider)).toList();
+        body: Consumer(
+          builder: (context, watch, child) {
+            // watch all 14 providers at the same time (this is big brain code)
+            // no need to use hookwidget for auto dispose becuase all
+            // these providers are auto disposable
+            var provs = styleImagesProviders
+                .map(
+                  (provider) => watch(provider),
+                )
+                .toList();
 
-          return GridView.builder(
-            padding: EdgeInsets.all(widget.isMobile ? 10 : 20),
-            primary: true,
-            scrollDirection: Axis.vertical,
-            itemCount: provs.length,
-            physics: BouncingScrollPhysics(),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: widget.rowSize,
-              childAspectRatio: 1,
-              crossAxisSpacing: widget.isMobile ? 10 : 20,
-              mainAxisSpacing: 20,
-            ),
-            itemBuilder: (context, index) => provs[index].when(
-              data: (data) => Column(
-                children: [
-                  Expanded(
-                    child: InkWell(
-                      onTap: () => Navigator.push(
-                        context,
-                        CupertinoPageRoute(
-                          builder: (context) => StyleView(
-                            isMobile: widget.isMobile,
-                            rowSize: widget.rowSize,
-                            provider: styleImagesProviders[index],
-                            category: Categories.values[index]
-                                .toShortString()
-                                .replaceAll("-", " ")
-                                .toTitleCase(),
+            return GridView.builder(
+              padding: EdgeInsets.all(widget.isMobile ? 10 : 20),
+              primary: true,
+              scrollDirection: Axis.vertical,
+              itemCount: provs.length,
+              physics: BouncingScrollPhysics(),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: widget.rowSize,
+                childAspectRatio: 1,
+                crossAxisSpacing: widget.isMobile ? 10 : 20,
+                mainAxisSpacing: 20,
+              ),
+              itemBuilder: (context, index) => provs[index].when(
+                data: (data) => Column(
+                  children: [
+                    Expanded(
+                      child: InkWell(
+                        onTap: () => Navigator.push(
+                          context,
+                          CupertinoPageRoute(
+                            builder: (context) => StyleView(
+                              isMobile: widget.isMobile,
+                              rowSize: widget.rowSize,
+                              provider: styleImagesProviders[index],
+                              category: Categories.values[index]
+                                  .toShortString()
+                                  .replaceAll("-", " ")
+                                  .toTitleCase(),
+                            ),
                           ),
                         ),
-                      ),
-                      child: NetworkImageContainer(
-                        imgName: data[randomNumber],
+                        child: NetworkImageContainer(
+                          imgName: data[randomNumber],
+                        ),
                       ),
                     ),
-                  ),
-                  SizedBox(height: widget.isMobile ? 5 : 10),
-                  Text(
-                    Categories.values[index]
-                        .toShortString()
-                        .replaceAll("-", " ")
-                        .toTitleCase(),
-                    style: TextStyle(
-                      fontSize: widget.isMobile ? 13 : 15,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  )
-                ],
+                    SizedBox(height: widget.isMobile ? 5 : 10),
+                    Text(
+                      Categories.values[index]
+                          .toShortString()
+                          .replaceAll("-", " ")
+                          .toTitleCase(),
+                      style: TextStyle(
+                        fontSize: widget.isMobile ? 13 : 15,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    )
+                  ],
+                ),
+                loading: () => CircularProgressIndicator(),
+                error: (err, stack) => Text(
+                  err.toString(),
+                ),
               ),
-              loading: () => CircularProgressIndicator(),
-              error: (err, stack) => Text(
-                err.toString(),
-              ),
-            ),
-          );
-        }),
+            );
+          },
+        ),
       ),
     );
   }
