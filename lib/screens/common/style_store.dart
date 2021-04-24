@@ -143,14 +143,14 @@ class _StyleStoreState extends State<StyleStore> with TickerProviderStateMixin {
                       ),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  SizedBox(height: widget.isMobile ? 5 : 10),
                   Text(
                     Categories.values[index]
                         .toShortString()
                         .replaceAll("-", " ")
                         .toTitleCase(),
                     style: TextStyle(
-                      fontSize: 15,
+                      fontSize: widget.isMobile ? 13 : 15,
                       fontWeight: FontWeight.w400,
                     ),
                   )

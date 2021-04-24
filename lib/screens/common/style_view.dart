@@ -36,8 +36,8 @@ class StyleView extends ConsumerWidget {
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: rowSize,
           childAspectRatio: 1,
-          crossAxisSpacing: 20,
-          mainAxisSpacing: 20,
+          crossAxisSpacing: isMobile ? 15 : 20,
+          mainAxisSpacing: isMobile ? 15 : 20,
         ),
         itemBuilder: (context, index) => prov.when(
           data: (data) => InkWell(
