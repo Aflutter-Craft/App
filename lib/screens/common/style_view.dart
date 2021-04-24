@@ -25,7 +25,7 @@ class StyleView extends ConsumerWidget {
     return Scaffold(
       backgroundColor: AppColors.backgroundCol,
       appBar: isMobile
-          ? mobileAppBar(label: category)
+          ? mobileAppBar(context: context, label: category)
           : desktopAppBar(context: context, label: category),
       body: GridView.builder(
         padding: EdgeInsets.all(isMobile ? 10 : 20),

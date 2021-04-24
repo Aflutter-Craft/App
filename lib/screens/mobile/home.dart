@@ -12,7 +12,7 @@ class MobileHome extends ConsumerWidget {
     var content = watch(contentProvider);
     var style = watch(styleProvider);
     return Scaffold(
-      appBar: mobileAppBar(label: APP_NAME),
+      appBar: mobileAppBar(context: context, label: APP_NAME),
       body: SingleChildScrollView(
         child: Center(
           child: Padding(

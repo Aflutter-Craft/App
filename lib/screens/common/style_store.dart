@@ -73,7 +73,7 @@ class _StyleStoreState extends State<StyleStore> with TickerProviderStateMixin {
       child: Scaffold(
         backgroundColor: AppColors.backgroundCol,
         appBar: widget.isMobile
-            ? mobileAppBar(label: "Style Store")
+            ? mobileAppBar(context: context, label: "Style Store")
             : desktopAppBar(context: context, label: "Style Store"),
         floatingActionButton: ScaleTransition(
           scale: _hideFabAnimation,
