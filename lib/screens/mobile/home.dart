@@ -49,6 +49,8 @@ class MobileHome extends ConsumerWidget {
                           .setImage(AssetImage(file.path));
                     }
                   },
+                  onDoubleTap: () async =>
+                      showImage(context: context, image: content),
                   child: ImageContainer(
                     image: content,
                     ratio: 0.4,
@@ -66,6 +68,8 @@ class MobileHome extends ConsumerWidget {
                       ),
                     ),
                   ),
+                  onDoubleTap: () async =>
+                      showImage(context: context, image: style),
                   child: ImageContainer(
                     image: style,
                     ratio: 0.4,
