@@ -54,8 +54,10 @@ class _StyleStoreState extends State<StyleStore> with TickerProviderStateMixin {
   initState() {
     super.initState();
     // initialize the animation controller
-    _hideFabAnimation =
-        AnimationController(vsync: this, duration: kThemeAnimationDuration);
+    _hideFabAnimation = AnimationController(
+      vsync: this,
+      duration: kThemeAnimationDuration,
+    );
     _hideFabAnimation.forward(); // show the fab button when the page is opened
   }
 
