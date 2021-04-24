@@ -1,7 +1,6 @@
 import 'package:aflutter_craft/utils/utils.dart';
-import 'package:flutter/material.dart';
-
 import 'package:aflutter_craft/widgets/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class About extends StatelessWidget {
