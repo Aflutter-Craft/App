@@ -1,6 +1,8 @@
+import 'package:aflutter_craft/screens/common/common.dart';
 import 'package:aflutter_craft/utils/utils.dart';
 import 'package:aflutter_craft/widgets/widgets.dart';
-
+import 'package:file_selector/file_selector.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -31,16 +33,45 @@ class MobileHome extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                ImageContainer(
-                  image: content,
-                  ratio: 0.4,
-                ),
-                SizedBox(height: 30),
-                ImageContainer(
-                  image: style,
-                  ratio: 0.4,
+                GestureDetector(
+                  onTap: () async {
+                    final typeGroup = XTypeGroup(
+                      label: 'images',
+                      extensions: ['jpg', 'png'],
+                    );
+                    final file = await openFile(
+                      acceptedTypeGroups: [typeGroup],
+                    );
+                    // update the content image provider(will update the ui image)
+                    if (file != null) {
+                      context
+                          .read(contentProvider.notifier)
+                          .setImage(AssetImage(file.path));
+                    }
+                  },
+                  child: ImageContainer(
+                    image: content,
+                    ratio: 0.4,
+                  ),
                 ),
                 SizedBox(height: 20),
+                GestureDetector(
+                  onTap: () => Navigator.push(
+                    context,
+                    CupertinoPageRoute(
+                      fullscreenDialog: true,
+                      builder: (context) => StyleStore(
+                        rowSize: 2,
+                        isMobile: true,
+                      ),
+                    ),
+                  ),
+                  child: ImageContainer(
+                    image: style,
+                    ratio: 0.4,
+                  ),
+                ),
+                SizedBox(height: 30),
                 StyledButton(
                   btnLabel: "Apply Style",
                   icon: Icons.check_circle,
