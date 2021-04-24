@@ -7,7 +7,7 @@ PreferredSizeWidget? mobileAppBar({label, context}) {
     child: AppBar(
       title: Text(
         label,
-        style: TextStyle(color: Colors.white),
+        style: TextStyle(color: Colors.white, fontSize: 16),
       ),
       elevation: 0,
       backgroundColor: AppColors.accentColor,
@@ -16,7 +16,7 @@ PreferredSizeWidget? mobileAppBar({label, context}) {
           ? IconButton(
               icon: Icon(Icons.arrow_back_ios),
               onPressed: () => Navigator.pop(context),
-              iconSize: 18,
+              iconSize: 16,
             )
           : null,
       iconTheme: IconThemeData(
