@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:aflutter_craft/screens/screens.dart';
 import 'package:aflutter_craft/utils/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:window_size/window_size.dart';
@@ -22,6 +23,16 @@ class MyApp extends StatelessWidget {
       setWindowTitle('Aflutter Craft');
       setWindowMinSize(Size(1280, 720));
       setWindowMaxSize(Size.infinite);
+    } else {
+      // set status bar and navigation bar colors
+      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+        systemNavigationBarColor: AppColors.backgroundCol,
+        statusBarColor: AppColors.accentColor,
+        statusBarBrightness: Brightness.light,
+        statusBarIconBrightness: Brightness.light,
+        systemNavigationBarDividerColor: AppColors.backgroundCol,
+        systemNavigationBarIconBrightness: Brightness.light,
+      ));
     }
 
     return MaterialApp(
