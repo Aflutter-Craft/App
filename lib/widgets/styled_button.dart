@@ -20,7 +20,7 @@ class StyledButton extends StatelessWidget {
           ),
           padding: EdgeInsets.symmetric(
             vertical: 15,
-            horizontal: 20,
+            horizontal: 10,
           ) // foreground
           ),
       child: Row(
