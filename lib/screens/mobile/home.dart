@@ -12,17 +12,7 @@ class MobileHome extends ConsumerWidget {
     var content = watch(contentProvider);
     var style = watch(styleProvider);
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColors.backgroundCol,
-        elevation: 0,
-        centerTitle: true,
-        title: Text(
-          "Aflutter Craft",
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
+      appBar: mobileAppBar(label: APP_NAME),
       body: SingleChildScrollView(
         child: Center(
           child: Padding(
