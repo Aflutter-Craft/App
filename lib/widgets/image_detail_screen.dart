@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class ImageDetailScreen extends StatelessWidget {
@@ -7,10 +9,13 @@ class ImageDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => Navigator.pop(context),
-      child: Center(
-        child: Image(image: image),
+    return BackdropFilter(
+      filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+      child: GestureDetector(
+        onTap: () => Navigator.pop(context),
+        child: Center(
+          child: Image(image: image),
+        ),
       ),
     );
   }
