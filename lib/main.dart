@@ -9,7 +9,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:window_size/window_size.dart';
 
 void main() {
-  runApp(ProviderScope(child: MyApp()));
+  runApp(
+    ProviderScope(
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -25,14 +29,16 @@ class MyApp extends StatelessWidget {
       setWindowMaxSize(Size.infinite);
     } else {
       // set status bar and navigation bar colors
-      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-        systemNavigationBarColor: AppColors.backgroundCol,
-        statusBarColor: AppColors.accentColor,
-        statusBarBrightness: Brightness.light,
-        statusBarIconBrightness: Brightness.light,
-        systemNavigationBarDividerColor: AppColors.backgroundCol,
-        systemNavigationBarIconBrightness: Brightness.light,
-      ));
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          systemNavigationBarColor: AppColors.backgroundCol,
+          statusBarColor: AppColors.accentColor,
+          statusBarBrightness: Brightness.light,
+          statusBarIconBrightness: Brightness.light,
+          systemNavigationBarDividerColor: AppColors.backgroundCol,
+          systemNavigationBarIconBrightness: Brightness.light,
+        ),
+      );
     }
 
     return MaterialApp(
