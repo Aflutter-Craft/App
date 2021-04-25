@@ -1,7 +1,6 @@
-import 'dart:io';
-
 import 'package:aflutter_craft/screens/screens.dart';
 import 'package:aflutter_craft/utils/theme.dart';
+import 'package:aflutter_craft/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -19,8 +18,6 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // check if we are on mobile
-    bool isMobile = Platform.isAndroid || Platform.isIOS;
 
     // set desktop window properties
     if (!isMobile) {

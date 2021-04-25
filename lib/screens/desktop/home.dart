@@ -33,7 +33,6 @@ class DesktopHome extends ConsumerWidget {
                   children: [
                     ContentContainer(
                       content: content,
-                      isMobile: false,
                       desc: "Click on any of the images to view in full size",
                     ),
                     SizedBox(height: 20),

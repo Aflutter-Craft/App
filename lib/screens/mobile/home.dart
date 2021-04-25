@@ -43,7 +43,6 @@ class MobileHome extends ConsumerWidget {
                       showImage(context: context, image: content),
                   child: ContentContainer(
                     content: content,
-                    isMobile: true,
                     desc: mobileTip,
                   ),
                 ),
@@ -55,7 +54,6 @@ class MobileHome extends ConsumerWidget {
                       fullscreenDialog: true,
                       builder: (context) => StyleStore(
                         rowSize: 2,
-                        isMobile: true,
                       ),
                     ),
                   ),
