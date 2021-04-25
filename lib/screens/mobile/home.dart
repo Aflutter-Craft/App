@@ -39,8 +39,10 @@ class MobileHome extends ConsumerWidget {
                           .setImage(AssetImage(file.path));
                     }
                   },
-                  onLongPress: () async =>
-                      showImage(context: context, image: content),
+                  onLongPress: () async => showImage(
+                    context: context,
+                    image: content,
+                  ),
                   child: ContentContainer(
                     content: content,
                     desc: mobileTip,
@@ -57,8 +59,10 @@ class MobileHome extends ConsumerWidget {
                       ),
                     ),
                   ),
-                  onLongPress: () async =>
-                      showImage(context: context, image: style),
+                  onLongPress: () async => showImage(
+                    context: context,
+                    image: style,
+                  ),
                   child: ImageContainer(
                     image: style,
                     ratio: 0.4,
