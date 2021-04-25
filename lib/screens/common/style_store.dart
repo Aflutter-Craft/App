@@ -17,7 +17,8 @@ class StyleStore extends StatefulWidget {
   _StyleStoreState createState() => _StyleStoreState();
 }
 
-class _StyleStoreState extends State<StyleStore> with TickerProviderStateMixin {
+class _StyleStoreState extends State<StyleStore>
+    with SingleTickerProviderStateMixin {
   // animation used to control the fab button visability
   // there is some text where its located
   // so gradually hide it when the user scrolls down
