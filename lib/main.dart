@@ -18,7 +18,6 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     // set desktop window properties
     if (!isMobile) {
       setWindowTitle('Aflutter Craft');
@@ -40,7 +39,7 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Aflutter Craft',
+      title: APP_NAME,
       theme: ThemeData(
         primaryColor: AppColors.backgroundCol,
         textTheme: GoogleFonts.interTextTheme(
