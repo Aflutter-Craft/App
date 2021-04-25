@@ -32,6 +32,7 @@ dependencies:
   url_launcher: any # launch a link in platform browser
   shared_preferences: any # for saving some app settings to device
   showcaseview: any # showcase app features on first time run
+  image_gallery_saver: any # for saving images to gallery (mobile)
   window_size: # set the window size and other stuff
     git:
       url: git://github.com/google/flutter-desktop-embedding.git
