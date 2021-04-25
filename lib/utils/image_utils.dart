@@ -1,6 +1,9 @@
 import 'dart:math';
 
+import 'package:aflutter_craft/widgets/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:showcaseview/showcaseview.dart';
 
 //  generate random index image to be shown as cover for style category
 // this is done once per app run
@@ -47,4 +50,22 @@ getImagesList({category}) async {
 bool checkDefault(content, style) {
   return content.toString().contains("default") ||
       style.toString().contains("default");
+}
+
+// shows a tooltip with some instructions on it when called
+// only used for images so it belongs in this file
+showTooltip(context, tooltips) async {
+  WidgetsBinding.instance!.addPostFrameCallback(
+    (_) => ShowCaseWidget.of(context)!.startShowCase(
+      tooltips,
+    ),
+  );
+}
+
+// show image in full screen
+showImage({image, context}) async {
+  await showDialog(
+      barrierColor: Colors.black54,
+      context: context,
+      builder: (context) => ImageDetailScreen(image: image));
 }

@@ -29,3 +29,6 @@ Figure below shows the model architecture, attention module architecture and ide
 Figure below shows the overall process of styling an image.\n!!The style images are taken from wikiart.com wikipedia's equivalent for art.''';
 
 const String PER_SITE = "https://blacksuan19.tk/";
+
+const String mobileTip =
+    '''Click on any of the images to select content or style, Long Click to view image in full size.''';
