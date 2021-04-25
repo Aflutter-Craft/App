@@ -50,6 +50,7 @@ class ResultsView extends ConsumerWidget {
                 StyledButton(
                   btnLabel: "Save",
                   icon: Icons.save_alt,
+                  // only enable if style transfer has compeleted
                   onPressed: result is AssetImage
                       ? null
                       : () async {
@@ -69,6 +70,7 @@ class ResultsView extends ConsumerWidget {
                 StyledButton(
                   btnLabel: "Share",
                   icon: Icons.share,
+                  // only enable if style transfer has compeleted
                   onPressed: result is AssetImage
                       ? null
                       : () async {

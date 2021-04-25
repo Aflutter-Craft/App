@@ -47,15 +47,12 @@ class ContentContainer extends ConsumerWidget {
           var _key = GlobalKey();
           // show the tooltip on first time app launch
           if (isFirstTime!) showTooltip(context, [_key]);
-          return GestureDetector(
-            onTap: () async => showImage(context: context, image: content),
-            child: Showcase(
-              key: _key,
-              description: desc,
-              child: ImageContainer(
-                image: content,
-                ratio: isMobile ? 0.4 : 0.55,
-              ),
+          return Showcase(
+            key: _key,
+            description: desc,
+            child: ImageContainer(
+              image: content,
+              ratio: isMobile ? 0.4 : 0.55,
             ),
           );
         },

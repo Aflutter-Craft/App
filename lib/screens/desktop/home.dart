@@ -31,9 +31,15 @@ class DesktopHome extends ConsumerWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    ContentContainer(
-                      content: content,
-                      desc: "Click on any of the images to view in full size",
+                    GestureDetector(
+                      onTap: () async => showImage(
+                        context: context,
+                        image: content,
+                      ),
+                      child: ContentContainer(
+                        content: content,
+                        desc: "Click on any of the images to view in full size",
+                      ),
                     ),
                     SizedBox(height: 20),
                     StyledButton(
