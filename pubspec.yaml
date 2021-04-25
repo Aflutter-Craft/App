@@ -30,6 +30,7 @@ dependencies:
   flutter_cache_manager: any # manage cache of network iamges
   path_provider: any # provide common used paths in a platform
   url_launcher: any # launch a link in platform browser
+  shared_preferences: any # for saving some app settings to device
   showcaseview: any # showcase app features on first time run
   window_size: # set the window size and other stuff
     git:
