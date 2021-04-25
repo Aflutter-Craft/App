@@ -3,7 +3,6 @@ import 'dart:typed_data';
 import 'package:aflutter_craft/utils/utils.dart';
 import 'package:aflutter_craft/widgets/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:social_share/social_share.dart';
@@ -14,6 +13,7 @@ class ResultsView extends ConsumerWidget {
     final content = watch(contentProvider);
     final style = watch(styleProvider);
     final result = watch(resultProvider);
+    final cache = watch(cacheProvider);
     return Scaffold(
       appBar: mobileAppBar(context: context, label: "Stylized Image"),
       body: Padding(
@@ -54,7 +54,6 @@ class ResultsView extends ConsumerWidget {
                       : () async {
                           // retrive image from temp directory
                           // using the caching functionality of CachedNetworkImage
-                          final cache = DefaultCacheManager();
                           final file = await cache.getSingleFile(result.url);
 
                           // save the image to user gallery
@@ -73,7 +72,6 @@ class ResultsView extends ConsumerWidget {
                       ? null
                       : () async {
                           // get image from cache
-                          final cache = DefaultCacheManager();
                           final file = await cache.getSingleFile(result.url);
 
                           // share it using default system share options

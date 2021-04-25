@@ -1,6 +1,7 @@
 import 'package:aflutter_craft/models/models.dart';
 import 'package:aflutter_craft/utils/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:riverpod/riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -36,3 +37,6 @@ final styleImagesProviders = Categories.values
 final sharedPrefsProvider = FutureProvider(
   (ref) async => await SharedPreferences.getInstance(),
 );
+
+// provider for cached images
+final cacheProvider = Provider((ref) => DefaultCacheManager());

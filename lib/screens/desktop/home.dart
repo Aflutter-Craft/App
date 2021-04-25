@@ -4,7 +4,6 @@ import 'package:aflutter_craft/widgets/widgets.dart';
 import 'package:file_selector/file_selector.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -13,10 +12,10 @@ class DesktopHome extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    var content = watch(contentProvider);
-    var style = watch(styleProvider);
-    var result = watch(resultProvider);
-
+    final content = watch(contentProvider);
+    final style = watch(styleProvider);
+    final result = watch(resultProvider);
+    final cache = watch(cacheProvider);
     return Scaffold(
       appBar: desktopAppBar(context: context),
       body: Container(
@@ -112,7 +111,6 @@ class DesktopHome extends ConsumerWidget {
                           : () async {
                               // retrive image from temp directory
                               // using the caching functionality of CachedNetworkImage
-                              final cache = DefaultCacheManager();
                               final file =
                                   await cache.getSingleFile(result.url);
 
