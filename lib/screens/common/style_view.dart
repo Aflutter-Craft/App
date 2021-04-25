@@ -6,18 +6,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class StyleView extends ConsumerWidget {
-  StyleView(
-      {this.category,
-      this.provider,
-      this.rowSize,
-      this.isMobile = false,
-      Key? key})
-      : super(key: key);
+  StyleView({
+    this.category,
+    this.provider,
+    this.rowSize,
+    Key? key,
+  }) : super(key: key);
 
   final provider;
   final String? category;
   final rowSize;
-  final bool isMobile;
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {

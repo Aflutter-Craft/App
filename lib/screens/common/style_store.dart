@@ -10,9 +10,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class StyleStore extends StatefulWidget {
   final rowSize;
-  final bool isMobile;
 
-  StyleStore({this.rowSize, this.isMobile = false, Key? key}) : super(key: key);
+  StyleStore({this.rowSize, Key? key}) : super(key: key);
 
   @override
   _StyleStoreState createState() => _StyleStoreState();
@@ -74,7 +73,7 @@ class _StyleStoreState extends State<StyleStore> with TickerProviderStateMixin {
       onNotification: _handleScrollNotification,
       child: Scaffold(
         backgroundColor: AppColors.backgroundCol,
-        appBar: widget.isMobile
+        appBar: isMobile
             ? mobileAppBar(context: context, label: "Style Store")
             : desktopAppBar(context: context, label: "Style Store"),
         floatingActionButton: ScaleTransition(
@@ -114,7 +113,7 @@ class _StyleStoreState extends State<StyleStore> with TickerProviderStateMixin {
                 .toList();
 
             return GridView.builder(
-              padding: EdgeInsets.all(widget.isMobile ? 10 : 20),
+              padding: EdgeInsets.all(isMobile ? 10 : 20),
               primary: true,
               scrollDirection: Axis.vertical,
               itemCount: provs.length,
@@ -122,7 +121,7 @@ class _StyleStoreState extends State<StyleStore> with TickerProviderStateMixin {
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: widget.rowSize,
                 childAspectRatio: 1,
-                crossAxisSpacing: widget.isMobile ? 10 : 20,
+                crossAxisSpacing: isMobile ? 10 : 20,
                 mainAxisSpacing: 20,
               ),
               itemBuilder: (context, index) => provs[index].when(
@@ -134,7 +133,6 @@ class _StyleStoreState extends State<StyleStore> with TickerProviderStateMixin {
                           context,
                           CupertinoPageRoute(
                             builder: (context) => StyleView(
-                              isMobile: widget.isMobile,
                               rowSize: widget.rowSize,
                               provider: styleImagesProviders[index],
                               category: Categories.values[index]
@@ -149,14 +147,14 @@ class _StyleStoreState extends State<StyleStore> with TickerProviderStateMixin {
                         ),
                       ),
                     ),
-                    SizedBox(height: widget.isMobile ? 5 : 10),
+                    SizedBox(height: isMobile ? 5 : 10),
                     Text(
                       Categories.values[index]
                           .toShortString()
                           .replaceAll("-", " ")
                           .toTitleCase(),
                       style: TextStyle(
-                        fontSize: widget.isMobile ? 13 : 15,
+                        fontSize: isMobile ? 13 : 15,
                         fontWeight: FontWeight.w400,
                       ),
                     )

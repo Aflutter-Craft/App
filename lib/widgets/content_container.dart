@@ -9,11 +9,9 @@ class ContentContainer extends ConsumerWidget {
     this.desc = "",
     Key? key,
     required this.content,
-    this.isMobile = false,
   }) : super(key: key);
 
   final content;
-  final bool isMobile;
   final String desc;
 
   @override
