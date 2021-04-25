@@ -41,9 +41,10 @@ class MobileHome extends ConsumerWidget {
                   },
                   onLongPress: () async =>
                       showImage(context: context, image: content),
-                  child: ImageContainer(
-                    image: content,
-                    ratio: 0.4,
+                  child: ContentContainer(
+                    content: content,
+                    isMobile: true,
+                    desc: mobileTip,
                   ),
                 ),
                 SizedBox(height: 20),

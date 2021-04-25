@@ -16,6 +16,7 @@ class DesktopHome extends ConsumerWidget {
     var content = watch(contentProvider);
     var style = watch(styleProvider);
     var result = watch(resultProvider);
+
     return Scaffold(
       appBar: desktopAppBar(context: context),
       body: Container(
@@ -30,12 +31,10 @@ class DesktopHome extends ConsumerWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    GestureDetector(
-                      onTap: () async =>
-                          showImage(context: context, image: content),
-                      child: ImageContainer(
-                        image: content,
-                      ),
+                    ContentContainer(
+                      content: content,
+                      isMobile: false,
+                      desc: "Click on any of the images to view in full size",
                     ),
                     SizedBox(height: 20),
                     StyledButton(
@@ -51,8 +50,8 @@ class DesktopHome extends ConsumerWidget {
                         );
                         // update the content image provider(will update the ui image)
                         if (file != null) {
-                        context
-                            .read(contentProvider.notifier)
+                          context
+                              .read(contentProvider.notifier)
                               .setImage(AssetImage(file.path));
                         }
                       },
