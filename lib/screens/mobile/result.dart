@@ -1,8 +1,6 @@
 import 'dart:typed_data';
 
 import 'package:aflutter_craft/utils/utils.dart';
-import 'package:aflutter_craft/widgets/image_container.dart';
-import 'package:aflutter_craft/widgets/mobile_appbar.dart';
 import 'package:aflutter_craft/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
