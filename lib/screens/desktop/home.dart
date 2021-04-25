@@ -50,9 +50,11 @@ class DesktopHome extends ConsumerWidget {
                           acceptedTypeGroups: [typeGroup],
                         );
                         // update the content image provider(will update the ui image)
+                        if (file != null) {
                         context
                             .read(contentProvider.notifier)
-                            .setImage(AssetImage(file!.path));
+                              .setImage(AssetImage(file.path));
+                        }
                       },
                     )
                   ],
