@@ -2,6 +2,7 @@
  		xmlns:tools="http://schemas.android.com/tools"
     package="dev.blacksuan19.aflutter_craft">
    <application
+        android:requestLegacyExternalStorage="true"
         android:label="aflutter_craft"
         android:icon="@mipmap/ic_launcher">
         <activity
