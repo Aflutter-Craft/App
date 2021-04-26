@@ -23,7 +23,7 @@ class MobileHome extends ConsumerWidget {
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               GestureDetector(
                 onTap: () async {
@@ -75,7 +75,12 @@ class MobileHome extends ConsumerWidget {
         icon: Icons.check_circle,
         // only enable the button when the current
         // style and content are not the default ones
-        onPressed: checkDefault(content, style) ? null : () => {},
+        onPressed: checkDefault(content, style)
+            ? () => showToast(
+                  context: context,
+                  text: "Select content and style images first!",
+                )
+            : () => {},
       ),
     );
   }
