@@ -133,7 +133,12 @@ class DesktopHome extends ConsumerWidget {
               icon: Icons.check_circle,
               // only enable the button when the current
               // style and content are not the default ones
-              onPressed: checkDefault(style, content) ? null : () => {},
+              onPressed: checkDefault(style, content)
+                  ? () => showToast(
+                        context: context,
+                        text: "Select content and style images first!",
+                      )
+                  : () => {},
             )
           ],
         ),
