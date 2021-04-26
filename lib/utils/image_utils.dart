@@ -65,7 +65,9 @@ showTooltip(context, tooltips) async {
 // show image in full screen
 showImage({image, context}) async {
   await showDialog(
-      barrierColor: Colors.black54,
-      context: context,
-      builder: (context) => ImageDetailScreen(image: image));
+    barrierDismissible: true,
+    barrierColor: Colors.black54,
+    context: context,
+    builder: (context) => ImageDetailScreen(image: image),
+  );
 }
