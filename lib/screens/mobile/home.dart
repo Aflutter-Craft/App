@@ -13,75 +13,72 @@ class MobileHome extends ConsumerWidget {
     var style = watch(styleProvider);
     return Scaffold(
       appBar: mobileAppBar(context: context, label: APP_NAME),
-      body: SingleChildScrollView(
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 10,
-              vertical: 20,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                GestureDetector(
-                  onTap: () async {
-                    final typeGroup = XTypeGroup(
-                      label: 'images',
-                      extensions: ['jpg', 'png'],
-                    );
-                    final file = await openFile(
-                      acceptedTypeGroups: [typeGroup],
-                    );
-                    // update the content image provider(will update the ui image)
-                    if (file != null) {
-                      context
-                          .read(contentProvider.notifier)
-                          .setImage(AssetImage(file.path));
-                    }
-                  },
-                  onLongPress: () async => showImage(
-                    context: context,
-                    image: content,
-                  ),
-                  child: ContentContainer(
-                    content: content,
-                    desc: mobileTip,
-                  ),
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 10,
+            vertical: 20,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              GestureDetector(
+                onTap: () async {
+                  final typeGroup = XTypeGroup(
+                    label: 'images',
+                    extensions: ['jpg', 'png'],
+                  );
+                  final file = await openFile(
+                    acceptedTypeGroups: [typeGroup],
+                  );
+                  // update the content image provider(will update the ui image)
+                  if (file != null) {
+                    context
+                        .read(contentProvider.notifier)
+                        .setImage(AssetImage(file.path));
+                  }
+                },
+                onLongPress: () async => showImage(
+                  context: context,
+                  image: content,
                 ),
-                SizedBox(height: 20),
-                GestureDetector(
-                  onTap: () => Navigator.push(
-                    context,
-                    CupertinoPageRoute(
-                      fullscreenDialog: true,
-                      builder: (context) => StyleStore(
-                        rowSize: 2,
-                      ),
+                child: ContentContainer(
+                  content: content,
+                  desc: mobileTip,
+                ),
+              ),
+              GestureDetector(
+                onTap: () => Navigator.push(
+                  context,
+                  CupertinoPageRoute(
+                    fullscreenDialog: true,
+                    builder: (context) => StyleStore(
+                      rowSize: 2,
                     ),
                   ),
-                  onLongPress: () async => showImage(
-                    context: context,
-                    image: style,
-                  ),
-                  child: ImageContainer(
-                    image: style,
-                    ratio: 0.4,
-                  ),
                 ),
-                SizedBox(height: 30),
-                StyledButton(
-                  btnLabel: "Apply Style",
-                  icon: Icons.check_circle,
-                  // only enable the button when the current
-                  // style and content are not the default ones
-                  onPressed: checkDefault(style, content) ? null : () => {},
+                onLongPress: () async => showImage(
+                  context: context,
+                  image: style,
                 ),
-              ],
-            ),
+                child: ImageContainer(
+                  image: style,
+                  ratio: 0.4,
+                ),
+              ),
+            ],
           ),
         ),
       ),
       backgroundColor: AppColors.backgroundCol,
+      floatingActionButton: StyledButton(
+        btnLabel: "Apply Style",
+        icon: Icons.check_circle,
+        // only enable the button when the current
+        // style and content are not the default ones
+        onPressed: checkDefault(content, style) ? null : () => {},
+      ),
     );
   }
 }
