@@ -29,8 +29,8 @@ class MyApp extends StatelessWidget {
         SystemUiOverlayStyle(
           systemNavigationBarColor: AppColors.backgroundCol,
           statusBarColor: AppColors.accentColor,
-          statusBarBrightness: Brightness.light,
-          statusBarIconBrightness: Brightness.light,
+          statusBarBrightness: Brightness.dark,
+          statusBarIconBrightness: Brightness.dark,
           systemNavigationBarDividerColor: AppColors.backgroundCol,
           systemNavigationBarIconBrightness: Brightness.light,
         ),
