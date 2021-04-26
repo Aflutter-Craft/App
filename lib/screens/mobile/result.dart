@@ -24,24 +24,34 @@ class ResultsView extends ConsumerWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                ImageContainer(
-                  image: content,
-                  ratio: 0.2,
-                ),
-                Text(
-                  "+",
-                  style: TextStyle(
-                    color: AppColors.accentColor,
-                    fontSize: 20,
+                GestureDetector(
+                  onLongPress: () async => showImage(
+                    context: context,
+                    image: content,
+                  ),
+                  child: ImageContainer(
+                    image: content,
+                    ratio: 0.2,
                   ),
                 ),
-                ImageContainer(
-                  image: style,
-                  ratio: 0.2,
+                GestureDetector(
+                  onLongPress: () async => showImage(
+                    context: context,
+                    image: style,
+                  ),
+                  child: ImageContainer(
+                    image: style,
+                    ratio: 0.2,
+                  ),
                 ),
               ],
             ),
-            ImageContainer(image: result),
+            GestureDetector(
+                onLongPress: () async => showImage(
+                      context: context,
+                      image: result,
+                    ),
+                child: ImageContainer(image: result)),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -62,6 +72,12 @@ class ResultsView extends ConsumerWidget {
                               await file.readAsBytes(),
                             ),
                           );
+
+                          // show a snackbar
+                          showToast(
+                            context: context,
+                            text: "Image saved to Gallery!",
+                          );
                         },
                 ),
                 StyledButton(
@@ -76,7 +92,7 @@ class ResultsView extends ConsumerWidget {
 
                           // share it using default system share options
                           SocialShare.shareOptions(
-                            "Share image to social media",
+                            "checkout this Image i made with an App called Aflutter Craft!",
                             imagePath: file.path,
                           );
                         },
