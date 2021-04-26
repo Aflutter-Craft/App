@@ -12,17 +12,17 @@ class StyledButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-          primary: AppColors.accentColor, // background
-          onPrimary: Colors.white,
-          elevation: 5,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(30.0),
-          ),
-          padding: EdgeInsets.symmetric(
-            vertical: 15,
-            horizontal: 20,
-          ) // foreground
-          ),
+        primary: AppColors.accentColor,
+        onPrimary: Colors.white,
+        elevation: 5,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30.0),
+        ),
+        padding: EdgeInsets.symmetric(
+          vertical: 15,
+          horizontal: isMobile ? 20 : 10,
+        ),
+      ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,
