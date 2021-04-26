@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:aflutter_craft/models/models.dart';
 import 'package:aflutter_craft/screens/common/common.dart';
 import 'package:aflutter_craft/utils/utils.dart';
@@ -7,6 +9,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:image_picker/image_picker.dart';
 
 class StyleStore extends StatefulWidget {
   final rowSize;
@@ -83,18 +86,26 @@ class _StyleStoreState extends State<StyleStore>
             btnLabel: "Upload Style",
             icon: Icons.add,
             onPressed: () async {
-              final typeGroup = XTypeGroup(
-                label: 'images',
-                extensions: ['jpg', 'png'],
-              );
-              final file = await openFile(
-                acceptedTypeGroups: [typeGroup],
-              );
+              // fetch file according to platform
+              var file;
+              if (isMobile) {
+                file = await ImagePicker().getImage(
+                  source: ImageSource.gallery,
+                );
+              } else {
+                final typeGroup = XTypeGroup(
+                  label: 'images',
+                  extensions: ['jpg', 'png'],
+                );
+                file = await openFile(
+                  acceptedTypeGroups: [typeGroup],
+                );
+              }
               // update the style image provider(will update the ui image)
               if (file != null) {
                 context
                     .read(styleProvider.notifier)
-                    .setImage(AssetImage(file.path));
+                    .setImage(FileImage(File(file.path)));
 
                 // go back to main screen
                 Navigator.pop(context);
