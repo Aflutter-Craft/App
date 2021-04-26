@@ -1,10 +1,12 @@
+import 'dart:io';
+
 import 'package:aflutter_craft/screens/common/common.dart';
 import 'package:aflutter_craft/utils/utils.dart';
 import 'package:aflutter_craft/widgets/widgets.dart';
-import 'package:file_selector/file_selector.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:image_picker/image_picker.dart';
 
 class MobileHome extends ConsumerWidget {
   @override
@@ -25,18 +27,14 @@ class MobileHome extends ConsumerWidget {
             children: [
               GestureDetector(
                 onTap: () async {
-                  final typeGroup = XTypeGroup(
-                    label: 'images',
-                    extensions: ['jpg', 'png'],
-                  );
-                  final file = await openFile(
-                    acceptedTypeGroups: [typeGroup],
+                  final file = await ImagePicker().getImage(
+                    source: ImageSource.gallery,
                   );
                   // update the content image provider(will update the ui image)
                   if (file != null) {
                     context
                         .read(contentProvider.notifier)
-                        .setImage(AssetImage(file.path));
+                        .setImage(FileImage(File(file.path)));
                   }
                 },
                 onLongPress: () async => showImage(
