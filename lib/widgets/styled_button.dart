@@ -20,24 +20,25 @@ class StyledButton extends StatelessWidget {
           ),
           padding: EdgeInsets.symmetric(
             vertical: 15,
-            horizontal: 10,
+            horizontal: 20,
           ) // foreground
           ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Text(
             btnLabel,
             style: TextStyle(
-              fontSize: 15,
+              fontSize: 16,
               fontWeight: FontWeight.w400,
             ),
           ),
-          SizedBox(width: 5),
+          SizedBox(width: 10),
           Icon(
             icon,
-            size: 17,
+            size: 18,
           ),
         ],
       ),
