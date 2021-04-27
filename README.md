@@ -1,6 +1,6 @@
 # aflutter_craft
 
-A platform for image style transfer, this is the cross platform application, check here for the [API](https://github.com/Blacksuan19/Aflutter-Craft-API)
+A platform for image style transfer, this is the cross platform application, check here for the [API](https://github.com/Blacksuan19/Aflutter-Craft-API).
 
 ## Supported Platform
 
@@ -12,13 +12,17 @@ the code is written with all platform is mind, however it was only tested on:
 
 ## Getting started
 
-- first thing to do is fetch the packages with `flutter pub get`
-- start coding or building for a specific platform
+this project is fully null-safe and uses the master channel of flutter.
+
+- first switch to the master branch with `flutter channel master`
+- fetch the packages with `flutter pub get`
+- start coding or building for a specific platform.
 - for details on how to build:
   - [Web](https://flutter.dev/docs/deployment/web)
   - [Linux](https://flutter.dev/docs/deployment/linux)
   - [Android](https://flutter.dev/docs/deployment/android)
   - [IOS](https://flutter.dev/docs/deployment/ios)
+  - [windows](https://flutter.dev/desktop#windows)
 
 ## Directory Structure
 
