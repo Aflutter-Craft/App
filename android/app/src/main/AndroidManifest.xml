@@ -3,7 +3,7 @@
     package="dev.blacksuan19.aflutter_craft">
    <application
         android:requestLegacyExternalStorage="true"
-        android:label="aflutter_craft"
+        android:label="Aflutter Craft"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
