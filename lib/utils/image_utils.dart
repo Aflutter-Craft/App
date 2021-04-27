@@ -77,7 +77,7 @@ showImage({image, context}) async {
 showToast({context, text}) {
   // calculate width according to device
   final width = isMobile
-      ? MediaQuery.of(context).size.width
+      ? MediaQuery.of(context).size.width * 0.9
       : MediaQuery.of(context).size.width * 0.3;
 
   ScaffoldMessenger.of(context).showSnackBar(
