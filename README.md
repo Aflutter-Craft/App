@@ -1,16 +1,46 @@
 # aflutter_craft
 
-A new Flutter project.
+A platform for image style transfer, this is the cross platform application, check here for the [API](https://github.com/Blacksuan19/Aflutter-Craft-API)
 
-## Getting Started
+## Supported Platform
 
-This project is a starting point for a Flutter application.
+the code is written with all platform is mind, however it was only tested on:
 
-A few resources to get you started if this is your first Flutter project:
+- Android
+- Linux
+- Web
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Getting started
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- first thing to do is fetch the packages with `flutter pub get`
+- start coding or building for a specific platform
+- for details on how to build:
+  - [Web](https://flutter.dev/docs/deployment/web)
+  - [Linux](https://flutter.dev/docs/deployment/linux)
+  - [Android](https://flutter.dev/docs/deployment/android)
+  - [IOS](https://flutter.dev/docs/deployment/ios)
+
+## Directory Structure
+
+```
+lib
+├── models          # data models
+├── screens         # application pages
+│   ├── common      # pages common between all platforms
+│   ├── desktop     # desktop/web pages
+│   └── mobile      # mobile pages
+├── utils           # utilities
+└── widgets         # components
+```
+
+## Screenshots
+
+![](screens/1.png)
+
+![](screens/2.png)
+
+![](screens/3.png)
+
+![](screens/4.png)
+
+![](screens/5.png)
