@@ -14,26 +14,28 @@ PreferredSizeWidget? desktopAppBar({context, label = APP_NAME}) {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          ...actions.map(
-            (action) {
-              // this is not very efficient when there are many elements in actions
-              var index = actions.indexOf(action);
-              return Row(
-                children: [
-                  buildLink(
-                    label: action,
-                    context: context,
-                    routeFun: makeRoute(
+          // only show actions on the home page
+          if (label == APP_NAME)
+            ...actions.map(
+              (action) {
+                // this is not very efficient when there are many elements in actions
+                var index = actions.indexOf(action);
+                return Row(
+                  children: [
+                    buildLink(
                       label: action,
                       context: context,
-                      route: routes[index],
+                      routeFun: makeRoute(
+                        label: action,
+                        context: context,
+                        route: routes[index],
+                      ),
                     ),
-                  ),
-                  SizedBox(width: 30),
-                ],
-              );
-            },
-          ),
+                    SizedBox(width: 30),
+                  ],
+                );
+              },
+            ),
         ],
       )
     ],
@@ -46,7 +48,7 @@ PreferredSizeWidget? desktopAppBar({context, label = APP_NAME}) {
               context: context,
               route: DesktopHome(),
             )
-          : () => {},
+          : null,
     ),
     elevation: 0,
     backgroundColor: AppColors.accentColor,
