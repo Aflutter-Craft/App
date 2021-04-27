@@ -18,23 +18,23 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // set desktop window properties
-    if (!isMobile) {
-      setWindowTitle('Aflutter Craft');
-      setWindowMinSize(Size(1280, 720));
-      setWindowMaxSize(Size.infinite);
-    } else {
+    if (isMobile) {
       // set status bar and navigation bar colors
       SystemChrome.setSystemUIOverlayStyle(
         SystemUiOverlayStyle(
-          systemNavigationBarColor: AppColors.backgroundCol,
           statusBarColor: AppColors.accentColor,
           statusBarBrightness: Brightness.dark,
           statusBarIconBrightness: Brightness.dark,
+          systemNavigationBarColor: AppColors.backgroundCol,
           systemNavigationBarDividerColor: AppColors.backgroundCol,
-          systemNavigationBarIconBrightness: Brightness.light,
+          systemNavigationBarIconBrightness: Brightness.dark,
         ),
       );
+    } else {
+      // set desktop window properties
+      setWindowTitle('Aflutter Craft');
+      setWindowMinSize(Size(1280, 720));
+      setWindowMaxSize(Size.infinite);
     }
 
     return MaterialApp(
