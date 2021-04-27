@@ -1,5 +1,3 @@
-# aflutter_craft
-
 A platform for image style transfer, this is the cross platform application, check here for the [API](https://github.com/Blacksuan19/Aflutter-Craft-API).
 
 ## Supported Platform
