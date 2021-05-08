@@ -45,7 +45,7 @@ styleTransfer(watch) async {
       : style.url.split('/').skip(4).take(5).join("/");
 
   // the API URL
-  final url = Uri.parse("");
+  final url = Uri.parse(API_ENDPOINT);
 
   var formData = FormData.fromMap({
     'alpha': alpha / 100, // scale back alpha value
@@ -67,6 +67,5 @@ styleTransfer(watch) async {
         );
 
   var response = await Dio().postUri(url, data: formData);
-
-  print(response);
+  return response;
 }

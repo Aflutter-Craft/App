@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:aflutter_craft/screens/common/common.dart';
@@ -108,15 +109,12 @@ class DesktopHome extends ConsumerWidget {
                       icon: Icons.download_outlined,
                       // only enable the save functionality when
                       // style transfer has already been performed
-                      // if it has already been performed
-                      // the result type will be CachedNetworkImageProvider
-                      onPressed: result is AssetImage
-                          ? null
-                          : () async {
+                      onPressed: result is FileImage
+                          ? () async {
                               // retrive image from temp directory
                               // using the caching functionality of CachedNetworkImage
                               final file =
-                                  await cache.getSingleFile(result.url);
+                                  await cache.getSingleFile(API_ENDPOINT);
 
                               // get system documents path
                               final path =
@@ -125,7 +123,8 @@ class DesktopHome extends ConsumerWidget {
 
                               // copy the file from cache to user directory
                               await file.copy(path + file.basename);
-                            },
+                            }
+                          : null,
                     ),
                   ],
                 ),
@@ -145,7 +144,39 @@ class DesktopHome extends ConsumerWidget {
                         context: context,
                         text: "Select content and style images first!",
                       )
-                  : () => {},
+                  : () async {
+                      // yes this can by any widget now
+                      context.read(resultProvider.notifier).setState(
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                CupertinoActivityIndicator(),
+                                SizedBox(height: 20),
+                                Text("Applying Style..."),
+                              ],
+                            ),
+                          );
+
+                      // get the stylized image from API
+                      final response = await styleTransfer(watch);
+
+                      // save it to cache (use endpoint as key)
+                      cache.putFile(
+                        API_ENDPOINT,
+                        base64Decode(
+                          response.data['image'].replaceAll("\n", ""),
+                        ),
+                        fileExtension: "jpg",
+                      );
+
+                      // get it as a file from cache
+                      final file = await cache.getSingleFile(API_ENDPOINT);
+
+                      // update result provider
+                      context
+                          .read(resultProvider.notifier)
+                          .setState(FileImage(file));
+                    },
             )
           ],
         ),
