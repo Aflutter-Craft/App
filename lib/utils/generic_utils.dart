@@ -1,9 +1,11 @@
-// shows a snackbar with passed text
+import 'dart:convert';
 
 import 'package:aflutter_craft/utils/utils.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+// shows a snackbar with passed text
 showToast({context, text}) {
   // calculate width according to device
   final width = isMobile
@@ -68,4 +70,38 @@ styleTransfer(watch) async {
 
   var response = await Dio().postUri(url, data: formData);
   return response;
+}
+
+// used to do style transfer and save results
+// while updating the results provider along the way
+performTransfer(context, watch) async {
+  final cache = watch(cacheProvider);
+  context.read(resultProvider.notifier).setState(
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CupertinoActivityIndicator(),
+            SizedBox(height: 20),
+            Text("Applying Style..."),
+          ],
+        ),
+      );
+
+  // get the stylized image from API
+  final response = await styleTransfer(watch);
+
+  // save it to cache (use endpoint as key)
+  cache.putFile(
+    API_ENDPOINT,
+    base64Decode(
+      response.data['image'].replaceAll("\n", ""),
+    ),
+    fileExtension: "jpg",
+  );
+
+  // get it as a file from cache
+  final file = await cache.getSingleFile(API_ENDPOINT);
+
+  // update result provider
+  context.read(resultProvider.notifier).setState(FileImage(file));
 }
