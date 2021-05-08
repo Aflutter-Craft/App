@@ -73,7 +73,8 @@ class MobileHome extends ConsumerWidget {
                   ),
                 ),
                 SizedBox(height: 30),
-                StyledSlider()
+                StyledSlider(),
+                SizedBox(height: 30),
               ],
             ),
           ),
@@ -90,19 +91,15 @@ class MobileHome extends ConsumerWidget {
                   context: context,
                   text: "Select content and style images first!",
                 )
-            : () async {
-                // go to results page
-                Navigator.push(
+            : () async => Navigator.push(
                   context,
                   CupertinoPageRoute(
                     fullscreenDialog: true,
                     builder: (context) => ResultsView(),
                   ),
-                );
-
-                // start style transfer
-                await performTransfer(context, watch);
-              },
+                ).then(
+                  (value) async => await performTransfer(context, watch),
+                ),
       ),
     );
   }
