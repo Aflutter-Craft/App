@@ -143,7 +143,7 @@ class DesktopHome extends ConsumerWidget {
                         context: context,
                         text: "Select content and style images first!",
                       )
-                  : () async => await performTransfer(context, watch),
+                  : () async => await performTransfer(watch),
             )
           ],
         ),

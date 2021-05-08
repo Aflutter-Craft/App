@@ -74,18 +74,20 @@ styleTransfer(watch) async {
 
 // used to do style transfer and save results
 // while updating the results provider along the way
-performTransfer(context, watch) async {
+performTransfer(watch) async {
   final cache = watch(cacheProvider);
-  context.read(resultProvider.notifier).setState(
-        Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CupertinoActivityIndicator(),
-            SizedBox(height: 20),
-            Text("Applying Style..."),
-          ],
-        ),
-      );
+  final result = watch(resultProvider.notifier);
+
+  result.setState(
+    Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        CupertinoActivityIndicator(),
+        SizedBox(height: 20),
+        Text("Applying Style..."),
+      ],
+    ),
+  );
 
   // get the stylized image from API
   final response = await styleTransfer(watch);
@@ -103,5 +105,5 @@ performTransfer(context, watch) async {
   final file = await cache.getSingleFile(API_ENDPOINT);
 
   // update result provider
-  context.read(resultProvider.notifier).setState(FileImage(file));
+  result.setState(FileImage(file));
 }
