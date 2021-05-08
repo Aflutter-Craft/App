@@ -17,7 +17,7 @@ class StyledSlider extends ConsumerWidget {
             ),
             children: [
               TextSpan(
-                text: "(amount of style to apply)",
+                text: "(amount of style to apply to image)",
                 style: TextStyle(
                   fontSize: 11,
                 ),
