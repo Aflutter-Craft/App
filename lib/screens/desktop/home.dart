@@ -131,29 +131,7 @@ class DesktopHome extends ConsumerWidget {
             ),
             Container(
               width: 300,
-              child: Column(
-                children: [
-                  Text.rich(
-                    TextSpan(
-                      text: "Content Style trade-off\n",
-                      style: TextStyle(
-                        fontSize: 14,
-                        height: 1.5,
-                      ),
-                      children: [
-                        TextSpan(
-                          text: "(amount of style to apply)",
-                          style: TextStyle(
-                            fontSize: 11,
-                          ),
-                        ),
-                      ],
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  StyledSlider(),
-                ],
-              ),
+              child: StyledSlider(),
             ),
             StyledButton(
               btnLabel: "Apply Style",
