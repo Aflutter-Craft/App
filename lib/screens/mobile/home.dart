@@ -11,61 +11,70 @@ import 'package:image_picker/image_picker.dart';
 class MobileHome extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    var content = watch(contentProvider);
-    var style = watch(styleProvider);
+    final content = watch(contentProvider);
+    final style = watch(styleProvider);
+
     return Scaffold(
       appBar: mobileAppBar(context: context, label: APP_NAME),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 10,
-            vertical: 20,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              GestureDetector(
-                onTap: () async {
-                  final file = await ImagePicker().getImage(
-                    source: ImageSource.gallery,
-                  );
-                  // update the content image provider(will update the ui image)
-                  if (file != null) {
-                    context
-                        .read(contentProvider.notifier)
-                        .setState(FileImage(File(file.path)));
-                  }
-                },
-                onLongPress: () async => showImage(
-                  context: context,
-                  image: content,
-                ),
-                child: ContentContainer(
-                  content: content,
-                  desc: mobileTip,
-                ),
-              ),
-              GestureDetector(
-                onTap: () => Navigator.push(
-                  context,
-                  CupertinoPageRoute(
-                    fullscreenDialog: true,
-                    builder: (context) => StyleStore(
-                      rowSize: 2,
-                    ),
+      body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.only(
+              left: 10,
+              right: 10,
+              top: 20,
+              bottom: 60,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                GestureDetector(
+                  onTap: () async {
+                    final file = await ImagePicker().getImage(
+                      source: ImageSource.gallery,
+                    );
+                    // update the content image provider(will update the ui image)
+                    if (file != null) {
+                      context
+                          .read(contentProvider.notifier)
+                          .setState(FileImage(File(file.path)));
+                    }
+                  },
+                  onLongPress: () async => showImage(
+                    context: context,
+                    image: content,
+                  ),
+                  child: ContentContainer(
+                    content: content,
+                    desc: mobileTip,
                   ),
                 ),
-                onLongPress: () async => showImage(
-                  context: context,
-                  image: style,
+                SizedBox(height: 20),
+                GestureDetector(
+                  onTap: () => Navigator.push(
+                    context,
+                    CupertinoPageRoute(
+                      fullscreenDialog: true,
+                      builder: (context) => StyleStore(
+                        rowSize: 2,
+                      ),
+                    ),
+                  ),
+                  onLongPress: () async => showImage(
+                    context: context,
+                    image: style,
+                  ),
+                  child: ImageContainer(
+                    image: style,
+                    ratio: 0.4,
+                  ),
                 ),
-                child: ImageContainer(
-                  image: style,
-                  ratio: 0.4,
-                ),
-              ),
-            ],
+                SizedBox(height: 30),
+                StyledSlider()
+              ],
+            ),
           ),
         ),
       ),
