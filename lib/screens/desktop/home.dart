@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:aflutter_craft/screens/common/common.dart';
 import 'package:aflutter_craft/utils/utils.dart';
 import 'package:aflutter_craft/widgets/widgets.dart';
@@ -58,7 +60,7 @@ class DesktopHome extends ConsumerWidget {
                         if (file != null) {
                           context
                               .read(contentProvider.notifier)
-                              .setState(AssetImage(file.path));
+                              .setState(FileImage(File(file.path)));
                         }
                       },
                     )
