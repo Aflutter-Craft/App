@@ -32,10 +32,15 @@ class ImageContainer extends StatelessWidget {
             offset: Offset(0, 6.0),
           )
         ],
-        image: DecorationImage(
-          image: image,
-          fit: BoxFit.cover,
-        ),
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(20),
+        child: image is ImageProvider
+            ? Image(
+                image: image,
+                fit: BoxFit.cover,
+              )
+            : image,
       ),
     );
   }
