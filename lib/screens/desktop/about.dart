@@ -1,3 +1,4 @@
+import 'package:aflutter_craft/models/FAQ.dart';
 import 'package:aflutter_craft/utils/utils.dart';
 import 'package:aflutter_craft/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -8,8 +9,6 @@ class About extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ques = QUES.split("!!");
-    final ans = ANS.split("!!");
     return Scaffold(
       appBar: desktopAppBar(context: context, label: "About"),
       body: Scrollbar(
@@ -48,14 +47,14 @@ class About extends StatelessWidget {
                 ListView.builder(
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,
-                  itemCount: ques.length,
+                  itemCount: faqs.length,
                   itemBuilder: (context, index) {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          ques[index],
+                          faqs[index].question,
                           style: TextStyle(
                             color: AppColors.accentColor,
                             fontWeight: FontWeight.bold,
@@ -64,33 +63,26 @@ class About extends StatelessWidget {
                         ),
                         SizedBox(height: 10),
                         Text(
-                          ans[index],
+                          faqs[index].answer,
                           style: TextStyle(
                             color: Colors.black,
                             height: 1.8,
                           ),
                           textAlign: TextAlign.left,
                         ),
-                        // show network architecture after the first question
-                        if (index == 0)
-                          Column(
-                            children: [
-                              Image(
-                                image: AssetImage("assets/images/network.png"),
-                                alignment: Alignment.center,
+                        // show images if there are any
+                        if (faqs[index].images != null)
+                          ...faqs[index].images!.map(
+                                (image) => Column(
+                                  children: [
+                                    Image(
+                                      image: AssetImage("assets/images/$image"),
+                                      alignment: Alignment.center,
+                                    ),
+                                    SizedBox(height: 10),
+                                  ],
+                                ),
                               ),
-                              SizedBox(height: 30),
-                              Image(
-                                image:
-                                    AssetImage("assets/images/attention.png"),
-                                alignment: Alignment.center,
-                              ),
-                            ],
-                          )
-                        else if (index == 1)
-                          Image(
-                            image: AssetImage("assets/images/api.png"),
-                          )
                       ],
                     );
                   },
