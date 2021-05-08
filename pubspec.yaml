@@ -19,7 +19,7 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   flutter_riverpod: any # state management
-  http: any # fetching stuff from the web
+  dio: any # fetching stuff from the web
   google_fonts: any # custom fonts
   file_selector: any # corss platform file selection
   file_selector_linux: any
