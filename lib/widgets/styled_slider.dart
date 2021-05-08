@@ -34,10 +34,8 @@ class StyledSlider extends ConsumerWidget {
         divisions: 10,
         value: alpha,
         onChanged: (newVal) {
-          print(alpha);
-          print(newVal);
           // update the alpha value provider (imagine using setState eww)
-          context.read(alphaProvider.notifier).setAlpha(newVal);
+          context.read(alphaProvider.notifier).setState(newVal);
         },
       ),
     );

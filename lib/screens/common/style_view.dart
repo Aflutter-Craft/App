@@ -41,7 +41,7 @@ class StyleView extends ConsumerWidget {
           data: (data) => InkWell(
             onTap: () {
               // update the content image provider(will update the ui image)
-              context.read(styleProvider.notifier).setImage(
+              context.read(styleProvider.notifier).setState(
                     CachedNetworkImageProvider(
                       BUCKET_PREFIX + data[index],
                     ),
