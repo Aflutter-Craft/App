@@ -172,7 +172,7 @@ class _StyleStoreState extends State<StyleStore>
                     )
                   ],
                 ),
-                loading: () => CircularProgressIndicator(),
+                loading: () => CupertinoActivityIndicator(),
                 error: (err, stack) => Text(
                   err.toString(),
                 ),
