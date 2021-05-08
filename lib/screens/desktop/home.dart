@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:aflutter_craft/screens/common/common.dart';
@@ -144,39 +143,7 @@ class DesktopHome extends ConsumerWidget {
                         context: context,
                         text: "Select content and style images first!",
                       )
-                  : () async {
-                      // yes this can by any widget now
-                      context.read(resultProvider.notifier).setState(
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                CupertinoActivityIndicator(),
-                                SizedBox(height: 20),
-                                Text("Applying Style..."),
-                              ],
-                            ),
-                          );
-
-                      // get the stylized image from API
-                      final response = await styleTransfer(watch);
-
-                      // save it to cache (use endpoint as key)
-                      cache.putFile(
-                        API_ENDPOINT,
-                        base64Decode(
-                          response.data['image'].replaceAll("\n", ""),
-                        ),
-                        fileExtension: "jpg",
-                      );
-
-                      // get it as a file from cache
-                      final file = await cache.getSingleFile(API_ENDPOINT);
-
-                      // update result provider
-                      context
-                          .read(resultProvider.notifier)
-                          .setState(FileImage(file));
-                    },
+                  : () async => await performTransfer(context, watch),
             )
           ],
         ),
