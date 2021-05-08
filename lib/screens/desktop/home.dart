@@ -58,7 +58,7 @@ class DesktopHome extends ConsumerWidget {
                         if (file != null) {
                           context
                               .read(contentProvider.notifier)
-                              .setImage(AssetImage(file.path));
+                              .setState(AssetImage(file.path));
                         }
                       },
                     )

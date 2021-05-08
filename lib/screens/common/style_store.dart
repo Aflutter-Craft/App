@@ -105,7 +105,7 @@ class _StyleStoreState extends State<StyleStore>
               if (file != null) {
                 context
                     .read(styleProvider.notifier)
-                    .setImage(FileImage(File(file.path)));
+                    .setState(FileImage(File(file.path)));
 
                 // go back to main screen
                 Navigator.pop(context);

@@ -34,7 +34,7 @@ class MobileHome extends ConsumerWidget {
                   if (file != null) {
                     context
                         .read(contentProvider.notifier)
-                        .setImage(FileImage(File(file.path)));
+                        .setState(FileImage(File(file.path)));
                   }
                 },
                 onLongPress: () async => showImage(
