@@ -16,13 +16,15 @@ class DesktopHome extends ConsumerWidget {
     final style = watch(styleProvider);
     final result = watch(resultProvider);
     final cache = watch(cacheProvider);
+
     return Scaffold(
       appBar: desktopAppBar(context: context),
       body: Container(
         color: AppColors.backgroundCol,
-        padding: EdgeInsets.only(top: 50, right: 10, left: 10, bottom: 30),
+        padding: EdgeInsets.only(top: 40, right: 10, left: 10, bottom: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -85,7 +87,7 @@ class DesktopHome extends ConsumerWidget {
                           ),
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
                 Column(
@@ -127,7 +129,32 @@ class DesktopHome extends ConsumerWidget {
                 ),
               ],
             ),
-            SizedBox(height: 80),
+            Container(
+              width: 300,
+              child: Column(
+                children: [
+                  Text.rich(
+                    TextSpan(
+                      text: "Content Style trade-off\n",
+                      style: TextStyle(
+                        fontSize: 14,
+                        height: 1.5,
+                      ),
+                      children: [
+                        TextSpan(
+                          text: "(amount of style to apply)",
+                          style: TextStyle(
+                            fontSize: 11,
+                          ),
+                        ),
+                      ],
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  StyledSlider(),
+                ],
+              ),
+            ),
             StyledButton(
               btnLabel: "Apply Style",
               icon: Icons.check_circle,
