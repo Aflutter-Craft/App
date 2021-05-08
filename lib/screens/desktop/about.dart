@@ -1,4 +1,4 @@
-import 'package:aflutter_craft/models/FAQ.dart';
+import 'package:aflutter_craft/models/models.dart';
 import 'package:aflutter_craft/utils/utils.dart';
 import 'package:aflutter_craft/widgets/widgets.dart';
 import 'package:flutter/material.dart';
