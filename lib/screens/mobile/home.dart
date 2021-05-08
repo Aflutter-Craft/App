@@ -67,7 +67,7 @@ class MobileHome extends ConsumerWidget {
                     context: context,
                     image: style,
                   ),
-                  child: ImageContainer(
+                  child: GenericContainer(
                     image: style,
                     ratio: 0.4,
                   ),

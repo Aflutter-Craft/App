@@ -50,7 +50,7 @@ class ContentContainer extends ConsumerWidget {
           return Showcase(
             key: _key,
             description: desc,
-            child: ImageContainer(
+            child: GenericContainer(
               image: content,
               ratio: isMobile ? 0.4 : 0.55,
             ),
