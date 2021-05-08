@@ -98,7 +98,7 @@ class MobileHome extends ConsumerWidget {
                     builder: (context) => ResultsView(),
                   ),
                 ).then(
-                  (value) async => await performTransfer(context, watch),
+                  (value) async => await performTransfer(watch),
                 ),
       ),
     );
