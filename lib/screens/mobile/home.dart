@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:aflutter_craft/screens/common/common.dart';
+import 'package:aflutter_craft/screens/screens.dart';
 import 'package:aflutter_craft/utils/utils.dart';
 import 'package:aflutter_craft/widgets/widgets.dart';
 import 'package:flutter/cupertino.dart';
@@ -89,7 +90,19 @@ class MobileHome extends ConsumerWidget {
                   context: context,
                   text: "Select content and style images first!",
                 )
-            : () => {},
+            : () async {
+                // go to results page
+                Navigator.push(
+                  context,
+                  CupertinoPageRoute(
+                    fullscreenDialog: true,
+                    builder: (context) => ResultsView(),
+                  ),
+                );
+
+                // start style transfer
+                await performTransfer(context, watch);
+              },
       ),
     );
   }
