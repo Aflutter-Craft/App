@@ -2,11 +2,11 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-class ImageContainer extends StatelessWidget {
+class GenericContainer extends StatelessWidget {
   final image;
   final ratio;
 
-  const ImageContainer({
+  const GenericContainer({
     Key? key,
     this.image,
     this.ratio = 0.55,

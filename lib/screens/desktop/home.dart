@@ -72,7 +72,7 @@ class DesktopHome extends ConsumerWidget {
                     GestureDetector(
                       onTap: () async =>
                           showImage(context: context, image: style),
-                      child: ImageContainer(
+                      child: GenericContainer(
                         image: style,
                       ),
                     ),
@@ -98,7 +98,7 @@ class DesktopHome extends ConsumerWidget {
                     GestureDetector(
                       onTap: () async =>
                           showImage(context: context, image: result),
-                      child: ImageContainer(
+                      child: GenericContainer(
                         image: result,
                       ),
                     ),

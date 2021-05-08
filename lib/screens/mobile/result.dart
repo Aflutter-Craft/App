@@ -29,7 +29,7 @@ class ResultsView extends ConsumerWidget {
                     context: context,
                     image: content,
                   ),
-                  child: ImageContainer(
+                  child: GenericContainer(
                     image: content,
                     ratio: 0.2,
                   ),
@@ -39,7 +39,7 @@ class ResultsView extends ConsumerWidget {
                     context: context,
                     image: style,
                   ),
-                  child: ImageContainer(
+                  child: GenericContainer(
                     image: style,
                     ratio: 0.2,
                   ),
@@ -51,7 +51,7 @@ class ResultsView extends ConsumerWidget {
                       context: context,
                       image: result,
                     ),
-                child: ImageContainer(image: result)),
+                child: GenericContainer(image: result)),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
