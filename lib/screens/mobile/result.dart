@@ -59,12 +59,11 @@ class ResultsView extends ConsumerWidget {
                   btnLabel: "Save",
                   icon: Icons.save_alt,
                   // only enable if style transfer has compeleted
-                  onPressed: result is AssetImage
-                      ? null
-                      : () async {
+                  onPressed: result is FileImage
+                      ? () async {
                           // retrive image from temp directory
                           // using the caching functionality of CachedNetworkImage
-                          final file = await cache.getSingleFile(result.url);
+                          final file = await cache.getSingleFile(API_ENDPOINT);
 
                           // save the image to user gallery
                           await ImageGallerySaver.saveImage(
@@ -78,24 +77,25 @@ class ResultsView extends ConsumerWidget {
                             context: context,
                             text: "Image saved to Gallery!",
                           );
-                        },
+                        }
+                      : null,
                 ),
                 StyledButton(
                   btnLabel: "Share",
                   icon: Icons.share,
                   // only enable if style transfer has compeleted
-                  onPressed: result is AssetImage
-                      ? null
-                      : () async {
+                  onPressed: result is FileImage
+                      ? () async {
                           // get image from cache
-                          final file = await cache.getSingleFile(result.url);
+                          final file = await cache.getSingleFile(API_ENDPOINT);
 
                           // share it using default system share options
                           SocialShare.shareOptions(
                             "checkout this Image i made with an App called Aflutter Craft!",
                             imagePath: file.path,
                           );
-                        },
+                        }
+                      : null,
                 ),
               ],
             )
