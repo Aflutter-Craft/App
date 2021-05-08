@@ -42,13 +42,7 @@ PreferredSizeWidget? desktopAppBar({context, label = APP_NAME}) {
     title: buildLink(
       label: label,
       context: context,
-      routeFun: label == APP_NAME
-          ? makeRoute(
-              label: label,
-              context: context,
-              route: DesktopHome(),
-            )
-          : null,
+      routeFun: null,
     ),
     elevation: 0,
     backgroundColor: AppColors.accentColor,
