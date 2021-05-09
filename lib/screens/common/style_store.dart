@@ -95,7 +95,7 @@ class _StyleStoreState extends State<StyleStore>
               } else {
                 final typeGroup = XTypeGroup(
                   label: 'images',
-                  extensions: ['jpg', 'png'],
+                  extensions: ['jpg', 'png', 'jpeg'],
                 );
                 file = await openFile(
                   acceptedTypeGroups: [typeGroup],
