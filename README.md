@@ -22,6 +22,18 @@ this project is fully null-safe and uses the master channel of flutter.
   - [IOS](https://flutter.dev/docs/deployment/ios)
   - [windows](https://flutter.dev/desktop#windows)
 
+### Generating App Icons
+
+`flutter_launcher_icons` is already set up to generate app icons with adaptive icons.
+
+- run `flutter pub run flutter_launcher_icons:main`
+
+### Generating App Splash
+
+`flutter_native_splash` is already set up to generate native splash screens for IOS, android and the web.
+
+- run `flutter pub run flutter_native_splash:create`
+
 ## Directory Structure
 
 ```
