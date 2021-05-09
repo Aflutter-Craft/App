@@ -68,7 +68,13 @@ styleTransfer(watch) async {
           MapEntry('style_path', stylePath),
         );
 
-  var response = await Dio().postUri(url, data: formData);
+  // get api response
+  var response;
+  try {
+    response = await Dio().postUri(url, data: formData);
+  } on DioError {
+    response = null;
+  }
   return response;
 }
 
@@ -92,6 +98,20 @@ performTransfer(watch) async {
   // get the stylized image from API
   final response = await styleTransfer(watch);
 
+  // if response is null then update the result and return
+  if (response == null) {
+    result.setState(
+      Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(Icons.error_outline),
+          SizedBox(height: 20),
+          Text("Faild to perform style transfer"),
+        ],
+      ),
+    );
+    return;
+  }
   // save it to cache (use endpoint as key)
   cache.putFile(
     API_ENDPOINT,
