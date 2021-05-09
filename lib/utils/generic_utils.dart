@@ -106,7 +106,7 @@ performTransfer(watch) async {
         children: [
           Icon(Icons.error_outline),
           SizedBox(height: 20),
-          Text("Faild to perform style transfer"),
+          Text("Failed to perform style transfer."),
         ],
       ),
     );
