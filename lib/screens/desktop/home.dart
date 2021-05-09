@@ -122,6 +122,12 @@ class DesktopHome extends ConsumerWidget {
 
                               // copy the file from cache to user directory
                               await file.copy(path + file.basename);
+
+                              // show a snackbar
+                              showToast(
+                                context: context,
+                                text: "Image saved to Gallery!",
+                              );
                             }
                           : null,
                     ),
