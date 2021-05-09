@@ -45,16 +45,16 @@ class ContentContainer extends ConsumerWidget {
       builder: Builder(
         builder: (context) {
           var _key = GlobalKey();
-          // show the tooltip on first time app launch
-          if (isFirstTime!) showTooltip(context, [_key]);
-          return Showcase(
-            key: _key,
-            description: desc,
-            child: GenericContainer(
-              image: content,
-              ratio: isMobile ? 0.4 : 0.55,
-            ),
+          var container = GenericContainer(
+            image: content,
+            ratio: isMobile ? 0.4 : 0.55,
           );
+          // show the tooltip on first time app launch
+          if (isFirstTime!) {
+            showTooltip(context, [_key]);
+            return Showcase(key: _key, description: desc, child: container);
+          }
+          return container;
         },
       ),
     );
