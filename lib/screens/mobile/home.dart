@@ -7,7 +7,6 @@ import 'package:aflutter_craft/widgets/widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:image_picker/image_picker.dart';
 
 class MobileHome extends ConsumerWidget {
   @override
@@ -33,9 +32,7 @@ class MobileHome extends ConsumerWidget {
               children: [
                 GestureDetector(
                   onTap: () async {
-                    final file = await ImagePicker().getImage(
-                      source: ImageSource.gallery,
-                    );
+                    final file = await pickMobileImage(context);
                     // update the content image provider(will update the ui image)
                     if (file != null) {
                       context
