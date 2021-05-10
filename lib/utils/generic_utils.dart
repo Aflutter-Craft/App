@@ -4,6 +4,7 @@ import 'package:aflutter_craft/utils/utils.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:showcaseview/showcaseview.dart';
 
 // shows a snackbar with passed text
 showToast({context, text}) {
@@ -126,4 +127,13 @@ performTransfer(watch) async {
 
   // update result provider
   result.setState(FileImage(file));
+}
+
+// shows a tooltip with some instructions on it when called
+showTooltip(context, tooltips) async {
+  WidgetsBinding.instance!.addPostFrameCallback(
+    (_) => ShowCaseWidget.of(context)!.startShowCase(
+      tooltips,
+    ),
+  );
 }
