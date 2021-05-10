@@ -79,25 +79,25 @@ class MobileHome extends ConsumerWidget {
       ),
       backgroundColor: AppColors.backgroundCol,
       floatingActionButton: StyledButton(
-        btnLabel: "Apply Style",
-        icon: Icons.check_circle,
-        // only enable the button when the current
-        // style and content are not the default ones
-        onPressed: checkDefault(content, style)
-            ? () => showToast(
-                  context: context,
-                  text: "Select content and style images first!",
-                )
-            : () async => Navigator.push(
-                  context,
-                  CupertinoPageRoute(
-                    fullscreenDialog: true,
-                    builder: (context) => ResultsView(),
-                  ),
-                ).then(
-                  (value) async => await performTransfer(watch),
-                ),
-      ),
+          btnLabel: "Apply Style",
+          icon: Icons.check_circle,
+          // only enable the button when the current
+          // style and content are not the default ones
+          onPressed: checkDefault(content, style)
+              ? () => showToast(
+                    context: context,
+                    text: "Select content and style images first!",
+                  )
+              : () async => {
+                    await performTransfer(watch),
+                    Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                        fullscreenDialog: true,
+                        builder: (context) => ResultsView(),
+                      ),
+                    )
+                  }),
     );
   }
 }
