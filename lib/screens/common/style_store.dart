@@ -9,7 +9,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:image_picker/image_picker.dart';
 
 class StyleStore extends StatefulWidget {
   final rowSize;
@@ -89,9 +88,7 @@ class _StyleStoreState extends State<StyleStore>
               // fetch file according to platform
               var file;
               if (isMobile) {
-                file = await ImagePicker().getImage(
-                  source: ImageSource.gallery,
-                );
+                file = await pickMobileImage(context);
               } else {
                 final typeGroup = XTypeGroup(
                   label: 'images',

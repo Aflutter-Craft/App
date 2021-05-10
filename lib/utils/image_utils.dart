@@ -1,8 +1,10 @@
 import 'dart:math';
 
+import 'package:aflutter_craft/utils/utils.dart';
 import 'package:aflutter_craft/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:showcaseview/showcaseview.dart';
 
 //  generate random index image to be shown as cover for style category
@@ -70,4 +72,59 @@ showImage({image, context}) async {
     context: context,
     builder: (context) => ImageDetailScreen(image: image),
   );
+}
+
+// pick mobile image from camera or gallery
+pickMobileImage(context) async {
+  var file;
+  final imageSource = await showModalBottomSheet<ImageSource>(
+    context: context,
+    backgroundColor: AppColors.backgroundCol,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(
+        top: Radius.circular(20),
+      ),
+    ),
+    builder: (context) => Container(
+      padding: EdgeInsets.all(30),
+      height: 150,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          MaterialButton(
+            child: Column(
+              children: [
+                Icon(
+                  Icons.add_a_photo_outlined,
+                  size: 40,
+                ),
+                SizedBox(height: 10),
+                Text("Take a Picture"),
+              ],
+            ),
+            onPressed: () => Navigator.pop(context, ImageSource.camera),
+          ),
+          MaterialButton(
+            child: Column(
+              children: [
+                Icon(
+                  Icons.add_photo_alternate_outlined,
+                  size: 40,
+                ),
+                SizedBox(height: 10),
+                Text("Pick from Gallery"),
+              ],
+            ),
+            onPressed: () => Navigator.pop(context, ImageSource.gallery),
+          )
+        ],
+      ),
+    ),
+  );
+  if (imageSource != null) {
+    file = await ImagePicker().getImage(
+      source: imageSource,
+    );
+  }
+  return file;
 }
