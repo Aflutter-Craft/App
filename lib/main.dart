@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       // set status bar and navigation bar colors
       SystemChrome.setSystemUIOverlayStyle(
         SystemUiOverlayStyle(
-          statusBarColor: AppColors.accentColor,
+          statusBarColor: AppColors.accentColor.withAlpha(0),
           statusBarBrightness: Brightness.dark,
           statusBarIconBrightness: Brightness.dark,
           systemNavigationBarColor: AppColors.backgroundCol,
