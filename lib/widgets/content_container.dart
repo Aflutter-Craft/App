@@ -52,7 +52,13 @@ class ContentContainer extends ConsumerWidget {
           // show the tooltip on first time app launch
           if (isFirstTime!) {
             showTooltip(context, [_key]);
-            return Showcase(key: _key, description: desc, child: container);
+            return Showcase(
+              key: _key,
+              description: desc,
+              contentPadding: EdgeInsets.all(10),
+              child: container,
+              shapeBorder: CircleBorder(),
+            );
           }
           return container;
         },
