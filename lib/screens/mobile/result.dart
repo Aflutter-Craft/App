@@ -1,8 +1,11 @@
+import 'dart:io';
+
 import 'package:aflutter_craft/utils/utils.dart';
 import 'package:aflutter_craft/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:social_share/social_share.dart';
 
 class ResultsView extends ConsumerWidget {
@@ -11,7 +14,7 @@ class ResultsView extends ConsumerWidget {
     final content = watch(contentProvider);
     final style = watch(styleProvider);
     final result = watch(resultProvider);
-    final cache = watch(cacheProvider);
+
     return Scaffold(
       appBar: mobileAppBar(context: context, label: "Stylized Image"),
       body: Padding(
@@ -78,10 +81,14 @@ class ResultsView extends ConsumerWidget {
                   btnLabel: "Share",
                   icon: Icons.share,
                   // only enable if style transfer has compeleted
-                  onPressed: result is FileImage
+                  onPressed: result is MemoryImage
                       ? () async {
-                          // get image from cache
-                          final file = await cache.getSingleFile(API_ENDPOINT);
+                          // save image to device cache before sharing
+                          final path = await getTemporaryDirectory();
+                          final file = await File(
+                            path.path + "result.png",
+                          ).create();
+                          await file.writeAsBytes(result.bytes);
 
                           // share it using default system share options
                           SocialShare.shareOptions(
