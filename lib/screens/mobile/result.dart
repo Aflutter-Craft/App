@@ -48,11 +48,13 @@ class ResultsView extends ConsumerWidget {
               ],
             ),
             GestureDetector(
-                onLongPress: () async => showImage(
-                      context: context,
-                      image: result,
-                    ),
-                child: GenericContainer(image: result)),
+              onLongPress: () async => showImage(
+                context: context,
+                image: result,
+              ),
+              child: GenericContainer(image: result),
+            ),
+            StyledSlider(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -76,6 +78,13 @@ class ResultsView extends ConsumerWidget {
                           );
                         }
                       : null,
+                ),
+                StyledButton(
+                  btnLabel: "Re-Apply Style",
+                  icon: Icons.check_circle,
+                  // no need to check what the images are because if the user
+                  // made it to this screen then they are already valid
+                  onPressed: () async => await performTransfer(watch),
                 ),
                 StyledButton(
                   btnLabel: "Share",
