@@ -1,5 +1,3 @@
-import 'dart:typed_data';
-
 import 'package:aflutter_craft/utils/utils.dart';
 import 'package:aflutter_craft/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -59,17 +57,13 @@ class ResultsView extends ConsumerWidget {
                   btnLabel: "Save",
                   icon: Icons.save_alt,
                   // only enable if style transfer has compeleted
-                  onPressed: result is FileImage
+                  onPressed: result is MemoryImage
                       ? () async {
-                          // retrive image from temp directory
-                          // using the caching functionality of CachedNetworkImage
-                          final file = await cache.getSingleFile(API_ENDPOINT);
-
                           // save the image to user gallery
                           await ImageGallerySaver.saveImage(
-                            Uint8List.fromList(
-                              await file.readAsBytes(),
-                            ),
+                            result.bytes,
+                            name:
+                                "style_transfer_result_${DateTime.now().millisecondsSinceEpoch}.png",
                           );
 
                           // show a snackbar

@@ -82,7 +82,6 @@ styleTransfer(watch) async {
 // used to do style transfer and save results
 // while updating the results provider along the way
 performTransfer(watch) async {
-  final cache = watch(cacheProvider);
   final result = watch(resultProvider.notifier);
 
   result.setState(
@@ -113,20 +112,15 @@ performTransfer(watch) async {
     );
     return;
   }
-  // save it to cache (use endpoint as key)
-  cache.putFile(
-    API_ENDPOINT,
-    base64Decode(
-      response.data['image'].replaceAll("\n", ""),
-    ),
-    fileExtension: "jpg",
-  );
-
-  // get it as a file from cache
-  final file = await cache.getSingleFile(API_ENDPOINT);
 
   // update result provider
-  result.setState(FileImage(file));
+  result.setState(
+    MemoryImage(
+      base64Decode(
+        response.data['image'].replaceAll("\n", ""),
+      ),
+    ),
+  );
 }
 
 // shows a tooltip with some instructions on it when called
