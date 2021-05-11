@@ -34,6 +34,7 @@ dependencies:
   showcaseview: any # showcase app features on first time run
   image_picker: any # for selecting an image in mobile
   image_gallery_saver: any # for saving images to gallery (mobile)
+  peanut: any # for deploying the web app
   window_size: # set the window size and other stuff
     git:
       url: git://github.com/google/flutter-desktop-embedding.git
