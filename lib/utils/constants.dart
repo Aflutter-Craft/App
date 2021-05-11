@@ -1,4 +1,4 @@
-import 'dart:io';
+import 'package:universal_io/io.dart';
 
 const String APP_NAME = "Aflutter Craft";
 
