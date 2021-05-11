@@ -14,6 +14,7 @@ const String mobileTip =
     '''Click on any of the images to select content or style, Long Click to view image in full size.''';
 
 // API endpoint
-const String API_ENDPOINT = "http://127.0.0.1:5000/";
+const String API_ENDPOINT =
+    "https://www.floydlabs.com/serve/blacksuan19/projects/aflutter-craft";
 // check the current platform
 final bool isMobile = Platform.isAndroid || Platform.isIOS;
