@@ -1,5 +1,3 @@
-import 'package:universal_io/io.dart';
-
 import 'package:aflutter_craft/utils/utils.dart';
 import 'package:aflutter_craft/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:social_share/social_share.dart';
+import 'package:universal_io/io.dart';
 
 class ResultsView extends ConsumerWidget {
   @override

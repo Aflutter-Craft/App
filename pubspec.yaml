@@ -34,7 +34,6 @@ dependencies:
   showcaseview: any # showcase app features on first time run
   image_picker: any # for selecting an image in mobile
   image_gallery_saver: any # for saving images to gallery (mobile)
-  peanut: any # for deploying the web app
   universal_io: any # IO operations on all platforms (thanks web)
   window_size: # set the window size and other stuff
     git:
@@ -42,8 +41,6 @@ dependencies:
       path: plugins/window_size
 
 dev_dependencies:
-  build_runner: any # peanut dependency
-  build_web_compilers: any # peanut dependency
   flutter_native_splash: any # generate splash screen for Android/IOS and Web
   flutter_launcher_icons: any # generate IOS/Android app icons
 

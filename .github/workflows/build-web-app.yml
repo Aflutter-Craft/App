@@ -15,8 +15,10 @@ jobs:
       with:
         channel: "master" # or: 'beta', 'dev' or 'master'
     - run: flutter pub get
-    - run: flutter pub global activate peanut
-    - run: export PATH="$PATH":"$HOME/.pub-cache/bin" 
     - run: flutter build web
-    - run: flutter pub global run peanut:peanut
+    - run: cd build/web
+    - run: git init && git checkout -b gh-pages
+    - run: git remote add origin https://github.com/Aflutter-Craft/App
+    - run: git fetch origin
+    - run: git commit -m "Build Web App"
     - run: git push --force origin --set-upstream gh-pages
