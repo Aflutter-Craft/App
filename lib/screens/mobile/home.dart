@@ -1,5 +1,3 @@
-import 'package:universal_io/io.dart';
-
 import 'package:aflutter_craft/screens/common/common.dart';
 import 'package:aflutter_craft/screens/screens.dart';
 import 'package:aflutter_craft/utils/utils.dart';
@@ -37,7 +35,7 @@ class MobileHome extends ConsumerWidget {
                     if (file != null) {
                       context
                           .read(contentProvider.notifier)
-                          .setState(FileImage(File(file.path)));
+                          .setState(MemoryImage(await file.readAsBytes()));
                     }
                   },
                   onLongPress: () async => showImage(

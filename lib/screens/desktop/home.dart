@@ -64,9 +64,8 @@ class DesktopHome extends ConsumerWidget {
                           );
                           // update the content image provider(will update the ui image)
                           if (file != null) {
-                            context
-                                .read(contentProvider.notifier)
-                                .setState(FileImage(File(file.path)));
+                            context.read(contentProvider.notifier).setState(
+                                MemoryImage(await file.readAsBytes()));
                           }
                         },
                       )
@@ -140,12 +139,12 @@ class DesktopHome extends ConsumerWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 10),
               Container(
                 width: 300,
                 child: StyledSlider(),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 10),
               StyledButton(
                 btnLabel: "Apply Style",
                 icon: Icons.check_circle,

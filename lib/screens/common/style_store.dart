@@ -1,5 +1,3 @@
-import 'package:universal_io/io.dart';
-
 import 'package:aflutter_craft/models/models.dart';
 import 'package:aflutter_craft/screens/common/common.dart';
 import 'package:aflutter_craft/utils/utils.dart';
@@ -102,7 +100,7 @@ class _StyleStoreState extends State<StyleStore>
               if (file != null) {
                 context
                     .read(styleProvider.notifier)
-                    .setState(FileImage(File(file.path)));
+                    .setState(MemoryImage(await file.readAsBytes()));
 
                 // go back to main screen
                 Navigator.pop(context);
