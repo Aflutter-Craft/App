@@ -1,0 +1,23 @@
+{
+    "name": "Aflutter Craft",
+    "short_name": "Aflutter Craft",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#f1f1f1",
+    "theme_color": "#ff4151",
+    "description": "A platform for neural art style transfer.",
+    "orientation": "landscape-primary",
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "icons/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/android-chrome-192x192.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
