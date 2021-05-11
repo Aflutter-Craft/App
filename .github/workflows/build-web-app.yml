@@ -1,4 +1,4 @@
-name: Build & Deploy Web App
+name: Web App
 on: [push]
 jobs:
   build:

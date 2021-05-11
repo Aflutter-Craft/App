@@ -1,4 +1,4 @@
-name: Build Linux Application
+name: Linux Application
 on: [push]
 jobs:
   build:
