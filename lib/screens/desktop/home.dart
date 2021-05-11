@@ -145,6 +145,7 @@ class DesktopHome extends ConsumerWidget {
                 width: 300,
                 child: StyledSlider(),
               ),
+              SizedBox(height: 20),
               StyledButton(
                 btnLabel: "Apply Style",
                 icon: Icons.check_circle,
