@@ -40,29 +40,28 @@ styleTransfer(watch) async {
   final style = watch(styleProvider);
   final alpha = watch(alphaProvider);
 
-  // get content image path
-  final contentPath = content.file.path;
   // get style image path depending on local or not
-  final stylePath = style is FileImage
-      ? style.file.path
-      : style.url.split('/').skip(4).take(5).join("/");
+  var stylePath;
+  if (style is! MemoryImage) {
+    stylePath = style.url.split('/').skip(4).take(5).join("/");
+  }
 
   // the API URL
   final url = Uri.parse(API_ENDPOINT);
 
   var formData = FormData.fromMap({
     'alpha': alpha / 100, // scale back alpha value
-    'content_img': await MultipartFile.fromFile(contentPath),
+    'content_img': MultipartFile.fromBytes(content.bytes),
   });
 
   // check if the style is local file
   // in that case add it to request files
   // otherwise pass it as style_path
-  style is FileImage
+  style is MemoryImage
       ? formData.files.add(
           MapEntry(
             'style_img',
-            await MultipartFile.fromFile(stylePath),
+            MultipartFile.fromBytes(style.bytes),
           ),
         )
       : formData.fields.add(
