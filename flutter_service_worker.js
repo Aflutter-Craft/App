@@ -3,7 +3,7 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "main.dart.js": "07b2582097dc8ce2b69a2f2de6ff4729",
+  "main.dart.js": "68c919a50e8f8b459c850f683e09d3fc",
 "assets/assets/texts/nude-painting-nu.txt": "171e6a991fcfd74ece31efbc3b25b0e8",
 "assets/assets/texts/still-life.txt": "1f3f65450eab361d4fb9fdc1d0a6ef33",
 "assets/assets/texts/genre-painting.txt": "113fbed6cb70fd4a030b0539c9062044",
@@ -28,7 +28,7 @@ const RESOURCES = {
 "assets/AssetManifest.json": "e3235a2ede5d5b450c93ab84fd5e08b2",
 "assets/FontManifest.json": "dc3d03800ccca4601324923c0b1d6d57",
 "assets/fonts/MaterialIcons-Regular.otf": "4e6447691c9509f7acdbf8a931a85ca1",
-"assets/NOTICES": "6e67b0fdc198982a4a3a902a14ac9dc2",
+"assets/NOTICES": "55d382f84474056513e752d55baf7959",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
 "version.json": "c721b61c4eb20627879b03bfd656e30a",
 "manifest.json": "0961dbe3ff9d37ca2ca435fcf66c2b0c",
