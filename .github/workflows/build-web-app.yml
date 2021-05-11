@@ -1,9 +1,12 @@
-name: Build Web App
+name: Build & Deploy Web App
 on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - run: |
+          git config --global user.email "abubakaryagob@gmail.com"
+          git config --global user.name "Blacksuan19"
     - uses: actions/checkout@v2
     - uses: actions/setup-java@v1
       with:
@@ -12,8 +15,8 @@ jobs:
       with:
         channel: "master" # or: 'beta', 'dev' or 'master'
     - run: flutter pub get
+    - run: flutter pub global activate peanut
+    - run: export PATH="$PATH":"$HOME/.pub-cache/bin" 
     - run: flutter build web
-    - uses: actions/upload-artifact@v2.2.3
-      with:
-        name: website source
-        path: build/web
+    - run: flutter pub global run peanut:peanut
+    - run: git push --force origin --set-upstream gh-pages
