@@ -88,16 +88,19 @@ class MobileHome extends ConsumerWidget {
                     context: context,
                     text: "Select content and style images first!",
                   )
-              : () async => {
-                    await performTransfer(watch),
-                    Navigator.push(
-                      context,
-                      CupertinoPageRoute(
-                        fullscreenDialog: true,
-                        builder: (context) => ResultsView(),
-                      ),
-                    )
-                  }),
+              : () async {
+                  // start style transfer after the new view (results) finishes loading
+                  WidgetsBinding.instance!.addPostFrameCallback((_) async {
+                    await performTransfer(watch);
+                  });
+                  Navigator.push(
+                    context,
+                    CupertinoPageRoute(
+                      fullscreenDialog: true,
+                      builder: (context) => ResultsView(),
+                    ),
+                  );
+                }),
     );
   }
 }
