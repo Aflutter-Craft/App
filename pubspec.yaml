@@ -41,8 +41,8 @@ dependencies:
       path: plugins/window_size
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
+  build_runner: any # peanut dependency
+  build_web_compilers: any # peanut dependency
   flutter_native_splash: any # generate splash screen for Android/IOS and Web
   flutter_launcher_icons: any # generate IOS/Android app icons
 
