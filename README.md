@@ -1,5 +1,8 @@
 A platform for image style transfer, this is the cross platform application, check here for the [API](https://github.com/Blacksuan19/Aflutter-Craft-API) and [here](https://github.com/Aflutter-Craft/Network) for the model implementation.
 
+[![Build Android App](https://github.com/Aflutter-Craft/App/actions/workflows/build-android-app.yml/badge.svg)](https://github.com/Aflutter-Craft/App/actions/workflows/build-android-app.yml)
+[![Build Web App](https://github.com/Aflutter-Craft/App/actions/workflows/build-web-app.yml/badge.svg?branch=master)](https://github.com/Aflutter-Craft/App/actions/workflows/build-web-app.yml)
+
 ## Supported Platform
 
 the code is written with all platform is mind, however it was only tested on:
