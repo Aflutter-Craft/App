@@ -1,6 +1,7 @@
 import 'package:aflutter_craft/screens/screens.dart';
 import 'package:aflutter_craft/utils/theme.dart';
 import 'package:aflutter_craft/utils/utils.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
           systemNavigationBarIconBrightness: Brightness.dark,
         ),
       );
-    } else {
+    } else if (!kIsWeb && !isMobile) {
       // set desktop window properties
       setWindowTitle('Aflutter Craft');
       setWindowMinSize(Size(1280, 720));
