@@ -1,4 +1,4 @@
-name: Build Android App
+name: Android App
 on: [push]
 jobs:
   build:
