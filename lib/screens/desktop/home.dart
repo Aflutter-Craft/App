@@ -17,7 +17,6 @@ class DesktopHome extends ConsumerWidget {
     final content = watch(contentProvider);
     final style = watch(styleProvider);
     final result = watch(resultProvider);
-    final cache = watch(cacheProvider);
 
     return Scaffold(
       appBar: desktopAppBar(context: context),
@@ -108,25 +107,24 @@ class DesktopHome extends ConsumerWidget {
                       icon: Icons.download_outlined,
                       // only enable the save functionality when
                       // style transfer has already been performed
-                      onPressed: result is FileImage
+                      onPressed: result is MemoryImage
                           ? () async {
-                              // retrive image from temp directory
-                              // using the caching functionality of CachedNetworkImage
-                              final file =
-                                  await cache.getSingleFile(API_ENDPOINT);
-
                               // get system documents path
                               final path =
                                   (await getApplicationDocumentsDirectory())
                                       .path;
 
+                              final file = await File(
+                                path +
+                                    "style_transfer_result_${DateTime.now().millisecondsSinceEpoch}.png",
+                              ).create();
                               // copy the file from cache to user directory
-                              await file.copy(path + file.basename);
+                              await file.writeAsBytes(result.bytes);
 
                               // show a snackbar
                               showToast(
                                 context: context,
-                                text: "Image saved to Gallery!",
+                                text: "Image saved to Home Directory!",
                               );
                             }
                           : null,
