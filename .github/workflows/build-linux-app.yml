@@ -12,8 +12,9 @@ jobs:
       with:
         channel: "master" # or: 'beta', 'dev' or 'master'
     - run: flutter pub get
+    - run: flutter config --enable-linux-desktop
     - run: flutter build linux
     - uses: actions/upload-artifact@v2.2.3
       with:
         name: website source
-        path: build/linux/bundle
+        path: build/linux/x64/release
