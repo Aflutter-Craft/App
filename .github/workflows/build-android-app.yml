@@ -15,5 +15,5 @@ jobs:
     - run: flutter build apk --split-per-abi
     - uses: actions/upload-artifact@v2.2.3
       with:
-        name: release-apks
+        name: Aflutter-Craft-Apks
         path: build/app/outputs/apk/release/
