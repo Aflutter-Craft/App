@@ -51,7 +51,10 @@ styleTransfer(watch) async {
 
   var formData = FormData.fromMap({
     'alpha': alpha / 100, // scale back alpha value
-    'content_img': MultipartFile.fromBytes(content.bytes),
+    'content_img': MultipartFile.fromBytes(
+      content.bytes.toList(),
+      filename: "content.png",
+    ),
   });
 
   // check if the style is local file
@@ -61,7 +64,10 @@ styleTransfer(watch) async {
       ? formData.files.add(
           MapEntry(
             'style_img',
-            MultipartFile.fromBytes(style.bytes),
+            MultipartFile.fromBytes(
+              style.bytes.toList(),
+              filename: "style.png",
+            ),
           ),
         )
       : formData.fields.add(
