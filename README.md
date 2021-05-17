@@ -5,7 +5,7 @@ A platform for image style transfer, this is the cross platform application, che
 
 ## Supported Platform
 
-the code is written with all platform is mind, however it was only tested on:
+the code is written with all platforms is mind, however it was only tested on:
 
 - Android
 - Linux
@@ -13,7 +13,7 @@ the code is written with all platform is mind, however it was only tested on:
 
 ## Getting started
 
-this project is fully null-safe and uses the master channel of flutter.
+this project is fully [null-safe](https://dart.dev/null-safety) and uses the master channel of flutter.
 
 - first switch to the master branch with `flutter channel master`
 - fetch the packages with `flutter pub get`
