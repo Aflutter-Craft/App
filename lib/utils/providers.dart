@@ -44,4 +44,4 @@ final cacheProvider = Provider((ref) => DefaultCacheManager());
 // provider for alpha value (default to 0.8)
 // keep the value between 10 and 100 for aesthetic reasons (the label on the slider)
 // should be divided by 100 when sending to API
-final alphaProvider = StateNotifierProvider((ref) => GenericNotifier(80.0));
+final alphaProvider = StateNotifierProvider((ref) => GenericNotifier(60.0));
