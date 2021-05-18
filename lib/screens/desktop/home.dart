@@ -100,8 +100,10 @@ class DesktopHome extends ConsumerWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       GestureDetector(
-                        onTap: () async =>
-                            showImage(context: context, image: result),
+                        onTap: result is Column
+                            ? null
+                            : () async =>
+                                showImage(context: context, image: result),
                         child: GenericContainer(
                           image: result,
                         ),
