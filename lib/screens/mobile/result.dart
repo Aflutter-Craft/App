@@ -50,10 +50,12 @@ class ResultsView extends ConsumerWidget {
               ),
               SizedBox(height: 20),
               GestureDetector(
-                onLongPress: () async => showImage(
-                  context: context,
-                  image: result,
-                ),
+                onLongPress: result is Column
+                    ? null
+                    : () async => showImage(
+                          context: context,
+                          image: result,
+                        ),
                 child: GenericContainer(image: result),
               ),
               SizedBox(height: 20),
