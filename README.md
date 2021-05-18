@@ -5,7 +5,7 @@ A platform for image style transfer, this is the cross platform application, che
 
 ## Supported Platform
 
-the code is written with all platforms is mind, however it was only tested on:
+the code is written with all platforms in mind, however it was only tested on:
 
 - Android
 - Linux
