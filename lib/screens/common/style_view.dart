@@ -38,12 +38,18 @@ class StyleView extends ConsumerWidget {
           mainAxisSpacing: isMobile ? 15 : 20,
         ),
         itemBuilder: (context, index) => prov.when(
-          data: (data) => InkWell(
+          data: (imagesList) => InkWell(
             onTap: () {
+              // fix weird character on windows
+              imagesList = imagesList
+                  .map(
+                    (item) => item.replaceAll("%0D", ""),
+                  )
+                  .toList();
               // update the content image provider(will update the ui image)
               context.read(styleProvider.notifier).setState(
                     CachedNetworkImageProvider(
-                      BUCKET_PREFIX + data[index],
+                      BUCKET_PREFIX + imagesList[index],
                     ),
                   );
 
@@ -53,7 +59,7 @@ class StyleView extends ConsumerWidget {
               nav.pop();
             },
             child: NetworkImageContainer(
-              imgName: data[index],
+              imgName: imagesList[index],
             ),
           ),
           loading: () => CupertinoActivityIndicator(),

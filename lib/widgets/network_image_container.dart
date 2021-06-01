@@ -14,7 +14,7 @@ class NetworkImageContainer extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(20),
       child: CachedNetworkImage(
-        imageUrl: BUCKET_PREFIX + imgName!,
+        imageUrl: BUCKET_PREFIX + imgName!.replaceAll("%0D", ""),
         placeholder: (context, url) => SizedBox(
           height: height * 0.6,
           width: height * 0.6,
