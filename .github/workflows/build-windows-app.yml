@@ -1,0 +1,17 @@
+name: Windows Application
+on: [push]
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: subosito/flutter-action@v1.5.0
+      with:
+        channel: "master"
+    - run: flutter pub get
+    - run: flutter config --enable-windows-desktop
+    - run: flutter build windows
+    - uses: actions/upload-artifact@v2.2.3
+      with:
+        name: Aflutter-Craft-Win64 
+        path: build/windows/runner/Release
