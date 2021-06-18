@@ -20,5 +20,5 @@ jobs:
     - run: chmod +x build/linux/x64/release/bundle/aflutter_craft 
     - uses: actions/upload-artifact@v2.2.3
       with:
-        name: Aflutter-Craft-x86-64
+        name: Aflutter-Craft-Linux64
         path: build/linux/x64/release/bundle
