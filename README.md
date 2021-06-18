@@ -16,6 +16,13 @@ the code is written with all platforms in mind, however it was only tested on:
 - Linux
 - Web
 
+## Downloads
+
+check [releases](https://github.com/Aflutter-Craft/App/releases) for prebuilt
+binaries for Android, Windows and Linux.
+[Actions](https://github.com/Aflutter-Craft/App/actions) also have prebuilt
+binaries that are always up to date.
+
 ## Getting started
 
 this project is fully [null-safe](https://dart.dev/null-safety) and uses the
